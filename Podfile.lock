@@ -1,26 +1,26 @@
 PODS:
-  - AppCenter (2.5.0):
-    - AppCenter/Analytics (= 2.5.0)
-    - AppCenter/Crashes (= 2.5.0)
-  - AppCenter/Analytics (2.5.0):
+  - AppCenter (4.1.1):
+    - AppCenter/Analytics (= 4.1.1)
+    - AppCenter/Crashes (= 4.1.1)
+  - AppCenter/Analytics (4.1.1):
     - AppCenter/Core
-  - AppCenter/Core (2.5.0)
-  - AppCenter/Crashes (2.5.0):
+  - AppCenter/Core (4.1.1)
+  - AppCenter/Crashes (4.1.1):
     - AppCenter/Core
-  - Audiobus (3.0.9.1)
-  - AudioKit (4.9.2):
-    - AudioKit/Core (= 4.9.2)
-    - AudioKit/UI (= 4.9.2)
-  - AudioKit/Core (4.9.2)
-  - AudioKit/UI (4.9.2):
+  - Audiobus (3.0.15)
+  - AudioKit (4.11.2):
+    - AudioKit/Core (= 4.11.2)
+    - AudioKit/UI (= 4.11.2)
+  - AudioKit/Core (4.11.2)
+  - AudioKit/UI (4.11.2):
     - AudioKit/Core
   - Disk (0.3.3)
-  - OneSignal (2.11.2)
+  - OneSignal (2.16.5)
 
 DEPENDENCIES:
   - AppCenter
   - Audiobus
-  - AudioKit (= 4.9.2)
+  - AudioKit (< 5)
   - Disk (~> 0.3.2)
   - OneSignal (< 3.0, >= 2.6.2)
 
@@ -33,12 +33,12 @@ SPEC REPOS:
     - OneSignal
 
 SPEC CHECKSUMS:
-  AppCenter: 637f180deefc61e8ab3f94223869ee50f61dabea
-  Audiobus: 83bb33ea2ed734779165a01c70091caf8143cf25
-  AudioKit: ee388f0c9ad4e90b6106c14caaf809cd7ca220da
+  AppCenter: cd53e3ed3563cc720bcb806c9731a12389b40d44
+  Audiobus: 172cf4b1c6abaf44b720d3d4cf3a9753d43da814
+  AudioKit: 57cc61d708f085763a031e5c3f87adae21dc4b59
   Disk: d1f55cd61f6ca20f368232d0c6e37e3c3dfcb63e
-  OneSignal: 4e3e68bb6c29975286a2fa910cb49132bc6e20bb
+  OneSignal: b72068b06b359f22e27404edee87338f4b68e783
 
-PODFILE CHECKSUM: 08600154cc26890e1979d0062b76978ed623cd8c
+PODFILE CHECKSUM: 076e2e1d58510f0683dbb489c01a8863b1e93384
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.1
