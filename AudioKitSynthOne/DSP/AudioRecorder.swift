@@ -39,7 +39,7 @@ class AudioRecorder {
     var viewDelegate: AudioRecorderViewDelegate?
     var viewTimer: Timer? // Timer to update View on recording progress
     
-    public init(node: AKNode? = AudioKit.output,
+    public init(node: AKNode? = AKManager.output,
                 file: AKAudioFile? = nil) {
         do {
             try self.nodeRecorder = AKNodeRecorder(node: node)

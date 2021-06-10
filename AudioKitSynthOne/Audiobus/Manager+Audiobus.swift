@@ -7,6 +7,7 @@
 //
 
 // AudioBus MIDI Input & Preset Loading
+/*
 #if !targetEnvironment(macCatalyst)
 extension Manager: ABAudiobusControllerStateIODelegate {
 
@@ -34,3 +35,4 @@ extension Manager: ABAudiobusControllerStateIODelegate {
 #if targetEnvironment(macCatalyst)
 extension Manager: ABAudiobusControllerStateIODelegate { }
 #endif
+*/

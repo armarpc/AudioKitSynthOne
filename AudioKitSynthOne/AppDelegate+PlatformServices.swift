@@ -5,7 +5,7 @@
 //  Created by Matthias Frick on 03/11/2019.
 //  Copyright © 2019 AudioKit. All rights reserved.
 //
-
+/*
 import Foundation
 #if !targetEnvironment(macCatalyst)
 import OneSignal
@@ -41,3 +41,4 @@ extension AppDelegate {
     public func initializePlatformServices() {}
 }
 #endif
+*/

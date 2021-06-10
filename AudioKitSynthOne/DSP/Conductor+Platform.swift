@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+/*
 #if !targetEnvironment(macCatalyst)
 extension Conductor {
       @objc func checkIAAConnectionsEnterBackground() {
@@ -44,3 +44,4 @@ extension Conductor {
       func checkIAAConnectionsEnterForeground() { }
 }
 #endif
+*/

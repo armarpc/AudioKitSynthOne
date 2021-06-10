@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+/*
 #if !targetEnvironment(macCatalyst)
 extension Conductor {
 
@@ -59,3 +59,4 @@ extension Conductor {
     func setupAudioBusInput() { }
 }
 #endif
+*/

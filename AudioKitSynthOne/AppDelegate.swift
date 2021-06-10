@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.isIdleTimerDisabled = false
 
         // Initialize Services specific to iOS or Mac Platforms
-        initializePlatformServices()
+        //initializePlatformServices()
 
         // Global appearance
         let attributes = [NSAttributedString.Key.font: UIFont(name: "Avenir Next", size: 14.0)!,
@@ -43,12 +43,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        conductor.checkIAAConnectionsEnterBackground()
+        //conductor.checkIAAConnectionsEnterBackground()
     }
 
     
     func applicationWillEnterForeground(_ application: UIApplication) {
-        conductor.checkIAAConnectionsEnterForeground()
+        //conductor.checkIAAConnectionsEnterForeground()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

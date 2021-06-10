@@ -8,7 +8,7 @@
 
 import Foundation
 import AudioKit
-
+/*
 #if !targetEnvironment(macCatalyst)
 extension Audiobus {
 
@@ -69,3 +69,4 @@ extension Audiobus {
     }
 }
 #endif
+*/

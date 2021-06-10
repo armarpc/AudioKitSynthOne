@@ -36,7 +36,7 @@ class Conductor: S1Protocol {
     var mixer: AKMixer?
 
   #if !targetEnvironment(macCatalyst)
-    var midiInput: ABMIDIReceiverPort?
+    //var midiInput: ABMIDIReceiverPort?
   #endif
 
     var audioBusMidiDelegate: AKMIDIListener?
@@ -206,13 +206,13 @@ class Conductor: S1Protocol {
         synth.delegate = self
         synth.rampDuration = 0.0 // Handle ramping internally instead of the ramper hack
         mixer = AKMixer(synth)
-        AudioKit.output = mixer
+        AKManager.output = mixer
         sustainer = SDSustainer(synth)
         audioRecorder = AudioRecorder(node: mixer)
         audioPlotter = AKNodeOutputPlot(synth)
 
         do {
-            try AudioKit.start()
+            try AKManager.start()
             #if DEBUG
             AKLog("AudioKit Started")
             #endif
@@ -222,7 +222,7 @@ class Conductor: S1Protocol {
         started = true
 
         #if !targetEnvironment(macCatalyst)
-        if let au = AudioKit.engine.outputNode.audioUnit {
+        if let au = AKManager.engine.outputNode.audioUnit {
 
             // IAA Host Icon
             audioUnitPropertyListener = AudioUnitPropertyListener { (_, _) in
@@ -237,8 +237,8 @@ class Conductor: S1Protocol {
                 AKLog("Unsuccessful")
             }
         }
-        Audiobus.start()
-        setupAudioBusInput()
+        //Audiobus.start()
+        //setupAudioBusInput()
         #endif
     }
 
@@ -307,10 +307,10 @@ class Conductor: S1Protocol {
 
     // Start/Pause AK Engine (Conserve energy by turning background audio off)
     func startEngine(completionHandler: AKCallback? = nil) {
-        AKLog("engine.isRunning: \(AudioKit.engine.isRunning)")
-        if !AudioKit.engine.isRunning {
+        AKLog("engine.isRunning: \(AKManager.engine.isRunning)")
+        if !AKManager.engine.isRunning {
             do {
-                try AudioKit.engine.start()
+                try AKManager.engine.start()
                 AKLog("AudioKit: engine is started.")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     completionHandler?()
@@ -325,7 +325,7 @@ class Conductor: S1Protocol {
     }
 
     func stopEngine() {
-        AudioKit.engine.pause()
+        AKManager.engine.pause()
     }
 
     func deactivateSession() {

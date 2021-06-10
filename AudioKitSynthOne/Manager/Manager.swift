@@ -185,10 +185,10 @@ public class Manager: UpdatableViewController, AudioRecorderFileDelegate {
         // MARK: - MIDI
 
         DispatchQueue.global(qos: .userInteractive).async {
-            AudioKit.midi.createVirtualInputPort(95_433, name: "AudioKit Synth One")
-            AudioKit.midi.openOutput(name: "AudioKit Synth One")
+            AKManager.midi.createVirtualInputPort(95_433, name: "AudioKit Synth One")
+            AKManager.midi.openOutput(name: "AudioKit Synth One")
         }
-        AudioKit.midi.addListener(self)
+        AKManager.midi.addListener(self)
 
         // Pre-load views and Set initial subviews
         // Inefficient and at odds with the definition of "lazy"
@@ -210,13 +210,13 @@ public class Manager: UpdatableViewController, AudioRecorderFileDelegate {
         var callbackStruct = AudioOutputUnitMIDICallbacks(
             userData: nil,
             MIDIEventProc: { (_, status, data1, data2, _) in
-                AudioKit.midi.sendMessage([MIDIByte(status), MIDIByte(data1), MIDIByte(data2)])
+                AKManager.midi.sendMessage([MIDIByte(status), MIDIByte(data1), MIDIByte(data2)])
             },
             MIDISysExProc: { (_, _, _) in
                 print("Not handling sysex")
             }
         )
-        guard let outputAudioUnit = AudioKit.engine.outputNode.audioUnit else {
+        guard let outputAudioUnit = AKManager.engine.outputNode.audioUnit else {
             AKLog("ERROR: can't create outputAudioUnit")
             return
         }
@@ -241,8 +241,8 @@ public class Manager: UpdatableViewController, AudioRecorderFileDelegate {
             self.keyboardLeftConstraint?.constant = 72.5
             self.keyboardRightConstraint?.constant = 72.5
         }
-        Audiobus.client?.controller.stateIODelegate = self
-        conductor.audioBusMidiDelegate = self
+        //Audiobus.client?.controller.stateIODelegate = self
+        //conductor.audioBusMidiDelegate = self
 
         // notifications
         registerForNotifications()

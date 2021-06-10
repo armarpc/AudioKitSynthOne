@@ -454,7 +454,7 @@ public class HeaderViewController: UpdatableViewController {
         var size = UInt32(MemoryLayout<CFURL>.size)
 
         #if !targetEnvironment(macCatalyst)
-        guard let outputAudioUnit = AudioKit.engine.outputNode.audioUnit else { return }
+        guard let outputAudioUnit = AKManager.engine.outputNode.audioUnit else { return }
         let result = AudioUnitGetProperty(
             outputAudioUnit,
             AudioUnitPropertyID(kAudioUnitProperty_PeerURL),

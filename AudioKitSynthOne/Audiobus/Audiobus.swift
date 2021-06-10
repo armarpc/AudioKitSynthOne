@@ -11,7 +11,7 @@
 import Foundation
 import AudioKit
 import CoreAudio
-
+/*
 #if !targetEnvironment(macCatalyst)
 class Audiobus {
 
@@ -32,7 +32,7 @@ class Audiobus {
 
     // swiftlint:disable force_unwrapping
     var audioUnit: AudioUnit {
-        return AudioKit.engine.outputNode.audioUnit!
+        return AKManager.engine.outputNode.audioUnit!
     }
     // swiftlint:enable force_unwrapping
 
@@ -201,3 +201,4 @@ class Audiobus {
   var controller: ABAudiobusController!
 }
 #endif
+*/
