@@ -6,6 +6,7 @@
 //  Copyright © 2018 AudioKit. All rights reserved.
 //
 #include <algorithm>
+#include <string.h>
 
 #import <AudioKit/AudioKit-swift.h>
 #import "../Sequencer/S1ArpModes.hpp"
@@ -46,18 +47,18 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
     
     for (AUAudioFrameCount frameIndex = 0; frameIndex < frameCount; frameIndex += blockFrameCount) {
         int vectorFrameCount = std::min(blockFrameCount, (int)(frameCount - frameIndex));
-        processVector(vectorFrameCount, bufferOffset, outL, outR);
+        processVector(vectorFrameCount, outL + bufferOffset, outR + bufferOffset);
         bufferOffset += vectorFrameCount;
     }
     
 }
 
-void S1DSPKernel::processVector(AUAudioFrameCount frameCount, AUAudioFrameCount bufferOffset,
-                                float* outL, float* outR) {
+void S1DSPKernel::processVector(AUAudioFrameCount frameCount, float* outL, float* outR) {
     ///MARK: RENDER LOOP: Render one audio frame at sample rate, i.e. 44100 HZ
 
     // CLEAR BUFFER
-    //outL[frameIndex] = outR[frameIndex] = 0.f;
+    memset(outL, 0, frameCount);
+    memset(outR, 0, frameCount);
     
     for (AUAudioFrameCount frameIndex = 0; frameIndex < frameCount; ++frameIndex) {
 

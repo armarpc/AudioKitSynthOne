@@ -89,8 +89,7 @@ public:
     ///PROCESS
     void process(AUAudioFrameCount frameCount, AUAudioFrameCount bufferOffset) override;
     
-    void processVector(AUAudioFrameCount frameCount, AUAudioFrameCount bufferOffset,
-                       float* outL, float* outR);
+    void processVector(AUAudioFrameCount frameCount, float* outL, float* outR);
     
     // turnOnKey is called by render thread in "process", so access note via AEArray
     void turnOnKey(int noteNumber, int velocity);
