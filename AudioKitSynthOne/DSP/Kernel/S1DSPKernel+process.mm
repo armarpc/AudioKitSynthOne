@@ -5,6 +5,7 @@
 //  Created by Aurelius Prochazka on 6/4/18.
 //  Copyright © 2018 AudioKit. All rights reserved.
 //
+#include <algorithm>
 
 #import <AudioKit/AudioKit-swift.h>
 #import "../Sequencer/S1ArpModes.hpp"
@@ -42,13 +43,23 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
         playingNotesDidChange();
         processSampleCounter = 0;
     }
+    
+    for (AUAudioFrameCount frameIndex = 0; frameIndex < frameCount; frameIndex += blockFrameCount) {
+        int vectorFrameCount = std::min(blockFrameCount, (int)(frameCount - frameIndex));
+        processVector(vectorFrameCount, bufferOffset, outL, outR);
+        bufferOffset += vectorFrameCount;
+    }
+    
+}
 
-
+void S1DSPKernel::processVector(AUAudioFrameCount frameCount, AUAudioFrameCount bufferOffset,
+                                float* outL, float* outR) {
     ///MARK: RENDER LOOP: Render one audio frame at sample rate, i.e. 44100 HZ
-    for (AUAudioFrameCount frameIndex = 0; frameIndex < frameCount; ++frameIndex) {
 
-        // CLEAR BUFFER
-        outL[frameIndex] = outR[frameIndex] = 0.f;
+    // CLEAR BUFFER
+    //outL[frameIndex] = outR[frameIndex] = 0.f;
+    
+    for (AUAudioFrameCount frameIndex = 0; frameIndex < frameCount; ++frameIndex) {
 
         ///MARK:MONO CHAIN
         // MONO chain uses outL, ignores outR.  STEREO starts at AutoPan

@@ -89,6 +89,9 @@ public:
     ///PROCESS
     void process(AUAudioFrameCount frameCount, AUAudioFrameCount bufferOffset) override;
     
+    void processVector(AUAudioFrameCount frameCount, AUAudioFrameCount bufferOffset,
+                       float* outL, float* outR);
+    
     // turnOnKey is called by render thread in "process", so access note via AEArray
     void turnOnKey(int noteNumber, int velocity);
     
@@ -291,6 +294,8 @@ private:
     // New noteOn events will steal voices to keep this number.
     // For now "polyphony" is constant equal to S1_MAX_POLYPHONY, but with some refactoring we could make it dynamic.
     const int polyphony = S1_MAX_POLYPHONY;
+    
+    const int blockFrameCount = 16;
     
     int playingNoteStatesIndex = 0;
     UInt32 tbl_size = S1_FTABLE_SIZE;
