@@ -15,14 +15,12 @@ PODS:
   - AudioKit/UI (4.11.2):
     - AudioKit/Core
   - Disk (0.3.3)
-  - OneSignal (2.16.5)
 
 DEPENDENCIES:
   - AppCenter
   - Audiobus
   - AudioKit (< 5)
   - Disk (~> 0.3.2)
-  - OneSignal (< 3.0, >= 2.6.2)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -30,15 +28,13 @@ SPEC REPOS:
     - Audiobus
     - AudioKit
     - Disk
-    - OneSignal
 
 SPEC CHECKSUMS:
   AppCenter: cd53e3ed3563cc720bcb806c9731a12389b40d44
   Audiobus: 172cf4b1c6abaf44b720d3d4cf3a9753d43da814
   AudioKit: 57cc61d708f085763a031e5c3f87adae21dc4b59
   Disk: d1f55cd61f6ca20f368232d0c6e37e3c3dfcb63e
-  OneSignal: b72068b06b359f22e27404edee87338f4b68e783
 
-PODFILE CHECKSUM: 076e2e1d58510f0683dbb489c01a8863b1e93384
+PODFILE CHECKSUM: 46222cc840dbff8175c7606ac2651c26df6d4390
 
 COCOAPODS: 1.10.1

@@ -324,7 +324,7 @@ public class Manager: UpdatableViewController, AudioRecorderFileDelegate {
 
         // Show email list if first run
         if appSettings.firstRun && !appSettings.signedMailingList && Private.MailChimpAPIKey != "***REMOVED***" && conductor.device != .phone {
-            performSegue(withIdentifier: "SegueToMailingList", sender: self)
+            //performSegue(withIdentifier: "SegueToMailingList", sender: self)
         }
         
         // Check for Device Type
@@ -360,6 +360,7 @@ public class Manager: UpdatableViewController, AudioRecorderFileDelegate {
             }
         }
         
+        /*
         // Push Notifications request
         if appSettings.launches == 9 && !appSettings.pushNotifications { pushPopUp() }
         if appSettings.launches % 75 == 0 &&
@@ -368,6 +369,7 @@ public class Manager: UpdatableViewController, AudioRecorderFileDelegate {
             appSettings.launches > 0 {
             pushPopUp()
         }
+        */
 
         // Keyboard show or hide on launch
         if appSettings.firstRun && conductor.device == .phone { appSettings.showKeyboard = 1.0 }

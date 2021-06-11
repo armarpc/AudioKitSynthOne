@@ -5,7 +5,7 @@
 //  Created by AudioKit Contributors on 1/8/18.
 //  Copyright © 2018 AudioKit Pro. All rights reserved.
 //
-
+/*
 import Foundation
 
 #if !targetEnvironment(macCatalyst)
@@ -46,3 +46,4 @@ extension Manager {
     public func pushPopUp() {}
 }
 #endif
+*/

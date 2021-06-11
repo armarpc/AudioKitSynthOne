@@ -165,6 +165,8 @@ class GeneratorsPanelController: PanelController, AudioRecorderViewDelegate {
         let audioPlotTap = UITapGestureRecognizer(target: self,
                                                   action: #selector(GeneratorsPanelController.audioPlotToggled))
         conductor.audioPlotter.addGestureRecognizer(audioPlotTap)
+        
+        conductor.audioPlotter.pause()
     }
 
     @objc func audioPlotToggled() {

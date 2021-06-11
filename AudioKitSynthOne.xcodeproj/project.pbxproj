@@ -3,11 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		48C3EE7437FA1B1E7916844E /* Pods_AudioKitSynthOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA27CDAC229BF66A1C649B42 /* Pods_AudioKitSynthOne.framework */; };
+		076E5FD22673B76D0089108B /* AudioKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076E5FD12673B76C0089108B /* AudioKit.xcframework */; };
+		076E5FD32673B76D0089108B /* AudioKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 076E5FD12673B76C0089108B /* AudioKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		076E5FD52673B7E60089108B /* AudioKitUI.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076E5FD42673B7E50089108B /* AudioKitUI.xcframework */; };
+		076E5FD62673B7E60089108B /* AudioKitUI.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 076E5FD42673B7E50089108B /* AudioKitUI.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		076E5FD92673BA820089108B /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = 076E5FD82673BA820089108B /* Disk */; };
 		69115F3E2363BBA100B144A5 /* Conductor+Audiobus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69115F3D2363BBA000B144A5 /* Conductor+Audiobus.swift */; };
 		692C04F82370C43A008CBDDA /* AppDelegate+PlatformServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69824682236EE83A00407DF4 /* AppDelegate+PlatformServices.swift */; };
 		693709DD23760AEA00D3C321 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693709DC23760AEA00D3C321 /* AudioRecorder.swift */; };
@@ -275,11 +279,24 @@
 		F4E4D00921C87B9F005B2FAF /* Tunings+DefaultTunings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E4D00821C87B9F005B2FAF /* Tunings+DefaultTunings.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		076E5FCB2673B64F0089108B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				076E5FD32673B76D0089108B /* AudioKit.xcframework in Embed Frameworks */,
+				076E5FD62673B7E60089108B /* AudioKitUI.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		3A319653D44EC41DAFAEB963 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		45E1A7C3C54D27427C4A71B1 /* Pods_AKS1Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AKS1Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		51EC225D22B5EE94B01AA474 /* Pods-AudioKitSynthOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioKitSynthOne.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AudioKitSynthOne/Pods-AudioKitSynthOne.debug.xcconfig"; sourceTree = "<group>"; };
-		5FAA47B316A5F659F440DAC9 /* Pods-AKS1Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AKS1Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AKS1Extension/Pods-AKS1Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		076E5FD12673B76C0089108B /* AudioKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AudioKit.xcframework; path = "../AudioKit frameworks.xcframework/AudioKit.xcframework"; sourceTree = "<group>"; };
+		076E5FD42673B7E50089108B /* AudioKitUI.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AudioKitUI.xcframework; path = "../AudioKit frameworks.xcframework/AudioKitUI.xcframework"; sourceTree = "<group>"; };
 		690F807A236B5B9D00FDC518 /* MailchimpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailchimpService.swift; sourceTree = "<group>"; };
 		69115F3D2363BBA000B144A5 /* Conductor+Audiobus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Conductor+Audiobus.swift"; sourceTree = "<group>"; };
 		693709DC23760AEA00D3C321 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
@@ -288,7 +305,6 @@
 		69ACD756238E8CED0050AB38 /* MIDIRecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIRecordButton.swift; sourceTree = "<group>"; };
 		69C11CF3236C375B00833BF7 /* MD5Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MD5Helpers.swift; sourceTree = "<group>"; };
 		69E4E45622381DF90049F0EA /* S1DSPCompressor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = S1DSPCompressor.hpp; sourceTree = "<group>"; };
-		90231BFB16779C7C2CD6CB3F /* Pods-AKS1Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AKS1Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-AKS1Extension/Pods-AKS1Extension.release.xcconfig"; sourceTree = "<group>"; };
 		9405503A210556C20039F101 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		9405503B210556C80039F101 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/About.strings; sourceTree = "<group>"; };
 		9405503C210556F20039F101 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Effects.strings; sourceTree = "<group>"; };
@@ -391,7 +407,6 @@
 		AF8CC7BD224815F200090F64 /* S1ArpModes.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = S1ArpModes.hpp; sourceTree = "<group>"; };
 		AF8CC7BE224815F200090F64 /* S1Sequencer.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = S1Sequencer.mm; sourceTree = "<group>"; };
 		AF8CC7BF224815F200090F64 /* S1SeqNoteNumber.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = S1SeqNoteNumber.hpp; sourceTree = "<group>"; };
-		BA27CDAC229BF66A1C649B42 /* Pods_AudioKitSynthOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudioKitSynthOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C40CBA2620CDE2B000A8245F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C40CBA2720CDE72500A8245F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C40CBA2820CDE7DA00A8245F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -554,9 +569,6 @@
 		C4F7ECA91F2446960011B119 /* Knob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knob.swift; sourceTree = "<group>"; };
 		C4F7ECAA1F2446960011B119 /* KnobStyleKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobStyleKit.swift; sourceTree = "<group>"; };
 		C4F7ECAB1F2446960011B119 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
-		CB0076A913A8D9EB5B5A6C27 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D96BC33C5D07149EC2FAB8CE /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
-		E2883EE9358887836A57FE08 /* Pods-AudioKitSynthOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioKitSynthOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-AudioKitSynthOne/Pods-AudioKitSynthOne.release.xcconfig"; sourceTree = "<group>"; };
 		EA090E4320F74B0A0012A8F7 /* Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Private.swift; sourceTree = "<group>"; };
 		EA143DC4210A83D600543E17 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EA143DC5210A83DF00543E17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -712,27 +724,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48C3EE7437FA1B1E7916844E /* Pods_AudioKitSynthOne.framework in Frameworks */,
 				C4B9C02B201D54D400D9833D /* AudioToolbox.framework in Frameworks */,
+				076E5FD52673B7E60089108B /* AudioKitUI.xcframework in Frameworks */,
+				076E5FD22673B76D0089108B /* AudioKit.xcframework in Frameworks */,
+				076E5FD92673BA820089108B /* Disk in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		54056ADC83E937067BBBA387 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				51EC225D22B5EE94B01AA474 /* Pods-AudioKitSynthOne.debug.xcconfig */,
-				E2883EE9358887836A57FE08 /* Pods-AudioKitSynthOne.release.xcconfig */,
-				3A319653D44EC41DAFAEB963 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */,
-				D96BC33C5D07149EC2FAB8CE /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */,
-				5FAA47B316A5F659F440DAC9 /* Pods-AKS1Extension.debug.xcconfig */,
-				90231BFB16779C7C2CD6CB3F /* Pods-AKS1Extension.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		941645CB20B3597300D62851 /* OneSignalNotificationServiceExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -769,10 +770,9 @@
 		9461F0371F5CAAE600EE226E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				076E5FD42673B7E50089108B /* AudioKitUI.xcframework */,
+				076E5FD12673B76C0089108B /* AudioKit.xcframework */,
 				C4B9C02A201D54D400D9833D /* AudioToolbox.framework */,
-				BA27CDAC229BF66A1C649B42 /* Pods_AudioKitSynthOne.framework */,
-				CB0076A913A8D9EB5B5A6C27 /* Pods_OneSignalNotificationServiceExtension.framework */,
-				45E1A7C3C54D27427C4A71B1 /* Pods_AKS1Extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1313,7 +1313,6 @@
 				C4D193C61F1187B500FF4FE4 /* AudioKitSynthOne */,
 				9461F0371F5CAAE600EE226E /* Frameworks */,
 				941645CB20B3597300D62851 /* OneSignalNotificationServiceExtension */,
-				54056ADC83E937067BBBA387 /* Pods */,
 				C4D193C51F1187B500FF4FE4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -1492,18 +1491,20 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C4D193D61F1187B500FF4FE4 /* Build configuration list for PBXNativeTarget "AudioKitSynthOne" */;
 			buildPhases = (
-				F326D17312DDE12585405CB6 /* [CP] Check Pods Manifest.lock */,
 				C4D193C01F1187B500FF4FE4 /* Sources */,
 				C4D193C11F1187B500FF4FE4 /* Frameworks */,
 				C4D193C21F1187B500FF4FE4 /* Resources */,
-				A02F99CB702A38B4BC2953CB /* [CP] Embed Pods Frameworks */,
 				C4421AA920B81D0500BE9F12 /* ShellScript */,
+				076E5FCB2673B64F0089108B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = AudioKitSynthOne;
+			packageProductDependencies = (
+				076E5FD82673BA820089108B /* Disk */,
+			);
 			productName = AudioKitSynthOne;
 			productReference = C4D193C41F1187B500FF4FE4 /* AudioKitSynthOne.app */;
 			productType = "com.apple.product-type.application";
@@ -1555,6 +1556,9 @@
 				"zh-Hans",
 			);
 			mainGroup = C4D193BB1F1187B500FF4FE4;
+			packageReferences = (
+				076E5FD72673BA820089108B /* XCRemoteSwiftPackageReference "Disk" */,
+			);
 			productRefGroup = C4D193C51F1187B500FF4FE4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1661,26 +1665,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A02F99CB702A38B4BC2953CB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AudioKitSynthOne/Pods-AudioKitSynthOne-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Disk/Disk.framework",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Audiobus/Audiobus.framework/Audiobus",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Disk.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Audiobus.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AudioKitSynthOne/Pods-AudioKitSynthOne-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C4421AA920B81D0500BE9F12 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1693,24 +1677,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#if which swiftlint >/dev/null; then\n#swiftlint\n#else\n#echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\n";
-		};
-		F326D17312DDE12585405CB6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AudioKitSynthOne-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2272,8 +2238,9 @@
 				OTHER_LDFLAGS = "-lstdc++";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "ABLETON_ENABLED_$(ABLETON_ENABLED)";
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/AudioKitSynthOne/DSP/AudioKitSynthOne-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WARNING_CFLAGS = "-Wno-incomplete-umbrella";
@@ -2282,7 +2249,6 @@
 		};
 		C4D193D71F1187B500FF4FE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 51EC225D22B5EE94B01AA474 /* Pods-AudioKitSynthOne.debug.xcconfig */;
 			buildSettings = {
 				ABLETON_ENABLED = 0;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2298,7 +2264,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = AudioKitSynthOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AudioKitSynthOne/Link/lib",
@@ -2325,7 +2294,6 @@
 		};
 		C4D193D81F1187B500FF4FE4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2883EE9358887836A57FE08 /* Pods-AudioKitSynthOne.release.xcconfig */;
 			buildSettings = {
 				ABLETON_ENABLED = 0;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2341,7 +2309,10 @@
 				GCC_OPTIMIZATION_LEVEL = fast;
 				INFOPLIST_FILE = AudioKitSynthOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AudioKitSynthOne/Link/lib",
@@ -2387,6 +2358,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		076E5FD72673BA820089108B /* XCRemoteSwiftPackageReference "Disk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/saoudrizwan/Disk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		076E5FD82673BA820089108B /* Disk */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 076E5FD72673BA820089108B /* XCRemoteSwiftPackageReference "Disk" */;
+			productName = Disk;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C4D193BC1F1187B500FF4FE4 /* Project object */;
 }
