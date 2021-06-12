@@ -12,6 +12,16 @@
 		076E5FD52673B7E60089108B /* AudioKitUI.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076E5FD42673B7E50089108B /* AudioKitUI.xcframework */; };
 		076E5FD62673B7E60089108B /* AudioKitUI.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 076E5FD42673B7E50089108B /* AudioKitUI.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		076E5FD92673BA820089108B /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = 076E5FD82673BA820089108B /* Disk */; };
+		07B641C7267474600071547C /* s1soundpipeextension.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B641C6267474600071547C /* s1soundpipeextension.hpp */; };
+		07B641D1267476900071547C /* compressor.c in Sources */ = {isa = PBXBuildFile; fileRef = 07B641C82674768E0071547C /* compressor.c */; };
+		07B641D2267476900071547C /* revsc.c in Sources */ = {isa = PBXBuildFile; fileRef = 07B641C92674768E0071547C /* revsc.c */; };
+		07B641D3267476900071547C /* vdelay.c in Sources */ = {isa = PBXBuildFile; fileRef = 07B641CA2674768E0071547C /* vdelay.c */; };
+		07B641D4267476900071547C /* butbp.c in Sources */ = {isa = PBXBuildFile; fileRef = 07B641CB2674768F0071547C /* butbp.c */; };
+		07B641D5267476900071547C /* phaser.c in Sources */ = {isa = PBXBuildFile; fileRef = 07B641CC2674768F0071547C /* phaser.c */; };
+		07B641D6267476900071547C /* delay.c in Sources */ = {isa = PBXBuildFile; fileRef = 07B641CD2674768F0071547C /* delay.c */; };
+		07B641D7267476900071547C /* buthp.c in Sources */ = {isa = PBXBuildFile; fileRef = 07B641CE2674768F0071547C /* buthp.c */; };
+		07B641D8267476900071547C /* crossfade.c in Sources */ = {isa = PBXBuildFile; fileRef = 07B641CF2674768F0071547C /* crossfade.c */; };
+		07B641D9267476900071547C /* moogladder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07B641D02674768F0071547C /* moogladder.mm */; };
 		69115F3E2363BBA100B144A5 /* Conductor+Audiobus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69115F3D2363BBA000B144A5 /* Conductor+Audiobus.swift */; };
 		692C04F82370C43A008CBDDA /* AppDelegate+PlatformServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69824682236EE83A00407DF4 /* AppDelegate+PlatformServices.swift */; };
 		693709DD23760AEA00D3C321 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693709DC23760AEA00D3C321 /* AudioRecorder.swift */; };
@@ -297,6 +307,16 @@
 /* Begin PBXFileReference section */
 		076E5FD12673B76C0089108B /* AudioKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AudioKit.xcframework; path = "../AudioKit frameworks.xcframework/AudioKit.xcframework"; sourceTree = "<group>"; };
 		076E5FD42673B7E50089108B /* AudioKitUI.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AudioKitUI.xcframework; path = "../AudioKit frameworks.xcframework/AudioKitUI.xcframework"; sourceTree = "<group>"; };
+		07B641C6267474600071547C /* s1soundpipeextension.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = s1soundpipeextension.hpp; path = AudioKitSynthOne/DSP/S1SoundpipeExtension/s1soundpipeextension.hpp; sourceTree = SOURCE_ROOT; };
+		07B641C82674768E0071547C /* compressor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = compressor.c; sourceTree = "<group>"; };
+		07B641C92674768E0071547C /* revsc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = revsc.c; sourceTree = "<group>"; };
+		07B641CA2674768E0071547C /* vdelay.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vdelay.c; sourceTree = "<group>"; };
+		07B641CB2674768F0071547C /* butbp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = butbp.c; sourceTree = "<group>"; };
+		07B641CC2674768F0071547C /* phaser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = phaser.c; sourceTree = "<group>"; };
+		07B641CD2674768F0071547C /* delay.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = delay.c; sourceTree = "<group>"; };
+		07B641CE2674768F0071547C /* buthp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = buthp.c; sourceTree = "<group>"; };
+		07B641CF2674768F0071547C /* crossfade.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crossfade.c; sourceTree = "<group>"; };
+		07B641D02674768F0071547C /* moogladder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = moogladder.mm; sourceTree = "<group>"; };
 		690F807A236B5B9D00FDC518 /* MailchimpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailchimpService.swift; sourceTree = "<group>"; };
 		69115F3D2363BBA000B144A5 /* Conductor+Audiobus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Conductor+Audiobus.swift"; sourceTree = "<group>"; };
 		693709DC23760AEA00D3C321 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
@@ -734,6 +754,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07B641C4267473FE0071547C /* S1SoundpipeExtension */ = {
+			isa = PBXGroup;
+			children = (
+				07B641C6267474600071547C /* s1soundpipeextension.hpp */,
+				07B641C5267474220071547C /* Modules */,
+			);
+			path = S1SoundpipeExtension;
+			sourceTree = "<group>";
+		};
+		07B641C5267474220071547C /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				07B641CB2674768F0071547C /* butbp.c */,
+				07B641CE2674768F0071547C /* buthp.c */,
+				07B641C82674768E0071547C /* compressor.c */,
+				07B641CF2674768F0071547C /* crossfade.c */,
+				07B641CD2674768F0071547C /* delay.c */,
+				07B641D02674768F0071547C /* moogladder.mm */,
+				07B641CC2674768F0071547C /* phaser.c */,
+				07B641C92674768E0071547C /* revsc.c */,
+				07B641CA2674768E0071547C /* vdelay.c */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		941645CB20B3597300D62851 /* OneSignalNotificationServiceExtension */ = {
 			isa = PBXGroup;
 			children = (
@@ -996,6 +1041,7 @@
 				C435C57520C530C900DAECCD /* Kernel */,
 				C435C56B20C530C900DAECCD /* Note State */,
 				C435C58B20C5336600DAECCD /* Rate */,
+				07B641C4267473FE0071547C /* S1SoundpipeExtension */,
 				C435C55720C530C900DAECCD /* TAAE */,
 			);
 			path = DSP;
@@ -1693,6 +1739,7 @@
 				F40636FD22E3EACC00A422D3 /* TuningsPitchWheelOverlayView.swift in Sources */,
 				F4CA406F225192A60053F29E /* MIDISynthButton.swift in Sources */,
 				C4B490F720C654E600FD565A /* S1DSPKernel+reset.mm in Sources */,
+				07B641C7267474600071547C /* s1soundpipeextension.hpp in Sources */,
 				C435C58420C530C900DAECCD /* S1NoteState.mm in Sources */,
 				C4B4915220C7C6FC00FD565A /* Manager+MIDISettingsPopOverDelegate.swift in Sources */,
 				C4B4915820C7C70D00FD565A /* TuningsPitchWheelView.swift in Sources */,
@@ -1704,6 +1751,7 @@
 				C43A13AE20FC4C7C009E2B30 /* ABLLinkManager.swift in Sources */,
 				C4B491B520C7D19F00FD565A /* TempoStepper.swift in Sources */,
 				F4658CA823FE5F9F00C1AB62 /* Manager+Notifications.swift in Sources */,
+				07B641D2267476900071547C /* revsc.c in Sources */,
 				C435C58220C530C900DAECCD /* AEMainThreadEndpoint.m in Sources */,
 				C4F7ECB71F244A510011B119 /* KnobStyleKit.swift in Sources */,
 				C4B491BD20C7DEB100FD565A /* SliderStyleKit.swift in Sources */,
@@ -1747,6 +1795,7 @@
 				69C11CF8236C96DC00833BF7 /* MD5Helpers.swift in Sources */,
 				C435C53120C52D4C00DAECCD /* Tunings+Math.swift in Sources */,
 				C435C58520C530C900DAECCD /* S1AudioUnit.mm in Sources */,
+				07B641D3267476900071547C /* vdelay.c in Sources */,
 				C4B4919020C7C7B200FD565A /* BankEditorViewController.swift in Sources */,
 				C4B4915120C7C6FC00FD565A /* MIDISettingsViewController.swift in Sources */,
 				69ACD757238E8CED0050AB38 /* MIDIRecordButton.swift in Sources */,
@@ -1756,10 +1805,12 @@
 				C435C51E20C52D1700DAECCD /* Bank.swift in Sources */,
 				C435C52520C52D1700DAECCD /* Preset.swift in Sources */,
 				C4B4910920C7C5C500FD565A /* SequencerPanelController.swift in Sources */,
+				07B641D6267476900071547C /* delay.c in Sources */,
 				F491FC5622DF914300CDB78E /* KeyboardView+Drawing.swift in Sources */,
 				C4B4919820C7C81200FD565A /* Manager+MailingListDelegate.swift in Sources */,
 				C4B4919320C7C7C500FD565A /* PresetsCategoriesViewController.swift in Sources */,
 				C432979720CB2E090063F795 /* Manager+Navigation.swift in Sources */,
+				07B641D4267476900071547C /* butbp.c in Sources */,
 				C4B4911D20C7C62A00FD565A /* KeyboardView.swift in Sources */,
 				C4B490ED20C64D8C00FD565A /* S1DSPKernel+getSetDependentParameters.mm in Sources */,
 				C4B491C320C7DF2A00FD565A /* LFOPickerStyleKit.swift in Sources */,
@@ -1767,9 +1818,11 @@
 				C4B490EF20C64E5600FD565A /* S1DSPKernel+didChanges.mm in Sources */,
 				C432979520CB2D620063F795 /* Manager+callbacks.swift in Sources */,
 				C4B4916B20C7C72A00FD565A /* InfoViewController.swift in Sources */,
+				07B641D7267476900071547C /* buthp.c in Sources */,
 				948D33A91F4DFC08006E8276 /* FilterTypeButton.swift in Sources */,
 				94FEFEC91F3150D00064EC09 /* SliderTransposeButton.swift in Sources */,
 				C4B4914820C7C6E300FD565A /* Audiobus.swift in Sources */,
+				07B641D1267476900071547C /* compressor.c in Sources */,
 				C4B4917920C7C75500FD565A /* Manager+HeaderDelegate.swift in Sources */,
 				AF8CC7C0224815F200090F64 /* S1Sequencer.mm in Sources */,
 				C4B490F320C6539200FD565A /* S1DSPKernel+process.mm in Sources */,
@@ -1797,6 +1850,7 @@
 				C4B491B120C7D11500FD565A /* MIDIKnob.swift in Sources */,
 				C47FB3C31F36694300EF2F01 /* RateKnob.swift in Sources */,
 				946980572169258A007EAA5B /* String+CapitalizeFirst.swift in Sources */,
+				07B641D9267476900071547C /* moogladder.mm in Sources */,
 				692C04F82370C43A008CBDDA /* AppDelegate+PlatformServices.swift in Sources */,
 				F4AD9EE2224856C2002B0E2E /* MIDIToggleButton.swift in Sources */,
 				C4B491BC20C7DEB100FD565A /* ArpButtonStyleKit.swift in Sources */,
@@ -1812,6 +1866,7 @@
 				9479F20321E4F9CE003605B9 /* iPhoneToggleButton.swift in Sources */,
 				947956A91F329AB200FE5D9B /* Stepper.swift in Sources */,
 				9479F20521E4FB06003605B9 /* TopUIButtonStyleKit.swift in Sources */,
+				07B641D8267476900071547C /* crossfade.c in Sources */,
 				C4B491A420C7C94E00FD565A /* EffectsPanelController.swift in Sources */,
 				C432979120CB2AA00063F795 /* Presets+UITextViewDelegate.swift in Sources */,
 				C4B490F120C64ED300FD565A /* S1DSPKernel+tapers.mm in Sources */,
@@ -1852,6 +1907,7 @@
 				C4B4916720C7C72A00FD565A /* PanelController.swift in Sources */,
 				C4B491BE20C7DEB100FD565A /* ArpDirectionStyleKit.swift in Sources */,
 				C4B4916A20C7C72A00FD565A /* UpdatableViewController.swift in Sources */,
+				07B641D5267476900071547C /* phaser.c in Sources */,
 				F4658CA623F7C00900C1AB62 /* S1MessageQueues.mm in Sources */,
 				F40636FB22E3EA2300A422D3 /* String+Drawing.swift in Sources */,
 				C435C57C20C530C900DAECCD /* AEMessageQueue.m in Sources */,

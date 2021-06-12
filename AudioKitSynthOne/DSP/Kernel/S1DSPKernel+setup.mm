@@ -23,6 +23,10 @@ void S1DSPKernel::updateWavetableIncrementValuesForCurrentSampleRate() {
         ft_array[i]->sicvt = currentSampleIncrement;
     }
     sine->sicvt = currentSampleIncrement;
+    
+    // Set the maximum number of consecutive silent samples to maximum delay time,
+    // which is equal to 10 seconds plus 1 frame (see sp_vdelay_init).
+    maximumSilenceSamples = 10 * sp->sr + 1;
 }
 
 /// tableIndex is on [0, S1_NUM_WAVEFORMS * S1_NUM_BANDLIMITED_FTABLES)

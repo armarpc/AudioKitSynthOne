@@ -335,6 +335,10 @@ private:
     // Count samples to limit main thread notification
     double processSampleCounter = 0;
     
+    // Count consecutive silence samples to reduce power consumption
+    int silenceSampleCounter = 0;
+    int maximumSilenceSamples = 480001; // Actual value is set in updateWavetableIncrementValuesForCurrentSampleRate()
+    
     ///once init'd: sequencerLastNotes can be accessed and mutated only within process and resetDSP
     std::list<int> sequencerLastNotes;
 
