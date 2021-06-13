@@ -39,10 +39,11 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
     /// throttle main thread notification to < 30hz
     processSampleCounter += frameCount;
     if (processSampleCounter > 2048.0) {
-        playingNotesDidChange();
+        if (playingNotesChanged()) {
+            playingNotesDidChange();
+        }
         processSampleCounter = 0;
     }
-
 
     ///MARK: RENDER LOOP: Render one audio frame at sample rate, i.e. 44100 HZ
     for (AUAudioFrameCount frameIndex = 0; frameIndex < frameCount; ++frameIndex) {

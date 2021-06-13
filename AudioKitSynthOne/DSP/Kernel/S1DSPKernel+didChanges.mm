@@ -68,3 +68,28 @@ void S1DSPKernel::heldNotesDidChange() {
                                               AEArgumentStruct(aeHeldNotes),
                                               AEArgumentNone);
 }
+
+// detects if there was a change in the playing notes, for the purpose of
+// updating the UI
+bool S1DSPKernel::playingNotesChanged() {
+    bool changed = false;
+    for (int i = 0; i < S1_MAX_POLYPHONY; i++) {
+        int rootNoteNumber = (*noteStates)[i].rootNoteNumber;
+        int transpose =  (*noteStates)[i].transpose;
+        int velocity = (*noteStates)[i].velocity;
+        if (rootNoteNumber != lastPlayingNotes[i][0]) {
+            lastPlayingNotes[i][0] = rootNoteNumber;
+            changed = true;
+        }
+        if (transpose != lastPlayingNotes[i][1]) {
+            lastPlayingNotes[i][1] = transpose;
+            changed = true;
+        }
+        if (velocity != lastPlayingNotes[i][2]) {
+            lastPlayingNotes[i][2] = velocity;
+            changed = true;
+        }
+    }
+    return changed;
+}
+

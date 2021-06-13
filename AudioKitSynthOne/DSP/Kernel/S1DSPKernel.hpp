@@ -211,6 +211,9 @@ public:
     PlayingNotes aePlayingNotes;
     
     HeldNotes aeHeldNotes;
+    
+    // detect note changes to update the UI
+    std::array<std::array<int, 3>, S1_MAX_POLYPHONY> lastPlayingNotes{};
 
     sp_ftbl *ft_array[S1_NUM_WAVEFORMS * S1_NUM_BANDLIMITED_FTABLES];
     float   ft_frequencyBand[S1_NUM_BANDLIMITED_FTABLES];
@@ -265,6 +268,10 @@ private:
     
     ///can be called from within the render loop
     void heldNotesDidChange();
+    
+    // detects if there was a change in the playing notes, for the purpose of
+    // updating the UI
+    bool playingNotesChanged();
     
     struct S1ParameterInfo {
         S1Parameter parameter;
