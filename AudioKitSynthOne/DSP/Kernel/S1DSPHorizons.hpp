@@ -16,17 +16,17 @@ private:
     int defaultFrameCount = 480001;
     
 public:
-    int phaserFrameCount = 128;
+    int phaserFrameCount = 47;
     
     int moogladderFrameCount = 8;
     
-    int vdelayTime = 10;
+    int vdelayDuration = 10;
     int vdelayFrameCount = defaultFrameCount;
     
     int pan2Duration = 10;
     int pan2FrameCount = defaultFrameCount;
     
-    int oscDuration = pan2Duration; // Pan oscilator
+    int oscDuration = pan2Duration; // pan2 oscilator
     int oscFrameCount = defaultFrameCount;
     
     int buthpFrameCount = 8;
@@ -39,6 +39,11 @@ public:
     int revscDuration = 5;
     int revscFrameCount = defaultFrameCount;
     
+    int widenDuration = 0.05;
+    int widenFrameCount = defaultFrameCount;
+    
+    // max between moogladder, buthp, and butbp
+    int filtersFrameCount = 8;
     
 private:
     int durationToFrameCount(double duration);
