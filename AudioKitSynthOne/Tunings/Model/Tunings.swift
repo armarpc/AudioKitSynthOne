@@ -129,7 +129,7 @@ final class Tunings {
     // MARK: - STORAGE
 
     func loadTunings(completionHandler: @escaping S1TuningLoadCallback) {
-        DispatchQueue.global(qos: .userInitiated).async {
+        /*DispatchQueue.global(qos: .userInitiated).async {
             /// CLEAR
             self.tuningBanks.removeAll()
 
@@ -175,7 +175,7 @@ final class Tunings {
             DispatchQueue.main.async {
                 completionHandler()
             }
-        }
+        }*/
     }
 
 

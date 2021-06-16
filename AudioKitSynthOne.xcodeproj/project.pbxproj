@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		076E5FD22673B76D0089108B /* AudioKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076E5FD12673B76C0089108B /* AudioKit.xcframework */; };
-		076E5FD32673B76D0089108B /* AudioKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 076E5FD12673B76C0089108B /* AudioKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		076E5FD52673B7E60089108B /* AudioKitUI.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076E5FD42673B7E50089108B /* AudioKitUI.xcframework */; };
-		076E5FD62673B7E60089108B /* AudioKitUI.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 076E5FD42673B7E50089108B /* AudioKitUI.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		076E5FD92673BA820089108B /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = 076E5FD82673BA820089108B /* Disk */; };
+		0790D534267A3DCE0092F20E /* AudioKitUI.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0790D532267A3DCE0092F20E /* AudioKitUI.xcframework */; };
+		0790D535267A3DCE0092F20E /* AudioKitUI.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0790D532267A3DCE0092F20E /* AudioKitUI.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0790D536267A3DCE0092F20E /* AudioKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0790D533267A3DCE0092F20E /* AudioKit.xcframework */; };
+		0790D537267A3DCE0092F20E /* AudioKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0790D533267A3DCE0092F20E /* AudioKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		07946D9F26757ABA002CB102 /* S1DSPHorizons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07946D9D26757ABA002CB102 /* S1DSPHorizons.cpp */; };
 		07B641C7267474600071547C /* s1soundpipeextension.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B641C6267474600071547C /* s1soundpipeextension.hpp */; };
 		07B641D1267476900071547C /* compressor.c in Sources */ = {isa = PBXBuildFile; fileRef = 07B641C82674768E0071547C /* compressor.c */; };
@@ -291,14 +291,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		076E5FCB2673B64F0089108B /* Embed Frameworks */ = {
+		0790D538267A3DCF0092F20E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				076E5FD32673B76D0089108B /* AudioKit.xcframework in Embed Frameworks */,
-				076E5FD62673B7E60089108B /* AudioKitUI.xcframework in Embed Frameworks */,
+				0790D535267A3DCE0092F20E /* AudioKitUI.xcframework in Embed Frameworks */,
+				0790D537267A3DCE0092F20E /* AudioKit.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,8 +306,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		076E5FD12673B76C0089108B /* AudioKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AudioKit.xcframework; path = "../AudioKit frameworks.xcframework/AudioKit.xcframework"; sourceTree = "<group>"; };
-		076E5FD42673B7E50089108B /* AudioKitUI.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AudioKitUI.xcframework; path = "../AudioKit frameworks.xcframework/AudioKitUI.xcframework"; sourceTree = "<group>"; };
+		0790D532267A3DCE0092F20E /* AudioKitUI.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AudioKitUI.xcframework; path = ../AudioKit4/AudioKit/Frameworks/AudioKitUI.xcframework; sourceTree = "<group>"; };
+		0790D533267A3DCE0092F20E /* AudioKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AudioKit.xcframework; path = ../AudioKit4/AudioKit/Frameworks/AudioKit.xcframework; sourceTree = "<group>"; };
 		07946D9D26757ABA002CB102 /* S1DSPHorizons.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = S1DSPHorizons.cpp; sourceTree = "<group>"; };
 		07946D9E26757ABA002CB102 /* S1DSPHorizons.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = S1DSPHorizons.hpp; sourceTree = "<group>"; };
 		07B641C6267474600071547C /* s1soundpipeextension.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = s1soundpipeextension.hpp; path = AudioKitSynthOne/DSP/S1SoundpipeExtension/s1soundpipeextension.hpp; sourceTree = SOURCE_ROOT; };
@@ -748,8 +748,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4B9C02B201D54D400D9833D /* AudioToolbox.framework in Frameworks */,
-				076E5FD52673B7E60089108B /* AudioKitUI.xcframework in Frameworks */,
-				076E5FD22673B76D0089108B /* AudioKit.xcframework in Frameworks */,
+				0790D536267A3DCE0092F20E /* AudioKit.xcframework in Frameworks */,
+				0790D534267A3DCE0092F20E /* AudioKitUI.xcframework in Frameworks */,
 				076E5FD92673BA820089108B /* Disk in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -818,8 +818,8 @@
 		9461F0371F5CAAE600EE226E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				076E5FD42673B7E50089108B /* AudioKitUI.xcframework */,
-				076E5FD12673B76C0089108B /* AudioKit.xcframework */,
+				0790D533267A3DCE0092F20E /* AudioKit.xcframework */,
+				0790D532267A3DCE0092F20E /* AudioKitUI.xcframework */,
 				C4B9C02A201D54D400D9833D /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
@@ -1546,7 +1546,7 @@
 				C4D193C11F1187B500FF4FE4 /* Frameworks */,
 				C4D193C21F1187B500FF4FE4 /* Resources */,
 				C4421AA920B81D0500BE9F12 /* ShellScript */,
-				076E5FCB2673B64F0089108B /* Embed Frameworks */,
+				0790D538267A3DCF0092F20E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
