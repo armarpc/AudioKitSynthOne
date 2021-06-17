@@ -20,6 +20,7 @@
 #import "S1Rate.hpp"
 #import "../Sequencer/S1Sequencer.hpp"
 #import "S1DSPCompressor.hpp"
+#import "S1DSPFilterCrossfade.hpp"
 
 @class AEArray;
 @class AEMessageQueue;
