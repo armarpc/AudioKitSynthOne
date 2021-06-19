@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		076E5FD22673B76D0089108B /* AudioKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076E5FD12673B76C0089108B /* AudioKit.xcframework */; };
-		076E5FD32673B76D0089108B /* AudioKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 076E5FD12673B76C0089108B /* AudioKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		076E5FD52673B7E60089108B /* AudioKitUI.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076E5FD42673B7E50089108B /* AudioKitUI.xcframework */; };
-		076E5FD62673B7E60089108B /* AudioKitUI.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 076E5FD42673B7E50089108B /* AudioKitUI.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0756852C267D725B00D0B4B8 /* AudioKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0756852A267D725B00D0B4B8 /* AudioKit.xcframework */; };
+		0756852D267D725B00D0B4B8 /* AudioKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0756852A267D725B00D0B4B8 /* AudioKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0756852E267D725B00D0B4B8 /* AudioKitUI.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0756852B267D725B00D0B4B8 /* AudioKitUI.xcframework */; };
+		0756852F267D725B00D0B4B8 /* AudioKitUI.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0756852B267D725B00D0B4B8 /* AudioKitUI.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		076E5FD92673BA820089108B /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = 076E5FD82673BA820089108B /* Disk */; };
 		69115F3E2363BBA100B144A5 /* Conductor+Audiobus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69115F3D2363BBA000B144A5 /* Conductor+Audiobus.swift */; };
 		692C04F82370C43A008CBDDA /* AppDelegate+PlatformServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69824682236EE83A00407DF4 /* AppDelegate+PlatformServices.swift */; };
@@ -286,8 +286,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				076E5FD32673B76D0089108B /* AudioKit.xcframework in Embed Frameworks */,
-				076E5FD62673B7E60089108B /* AudioKitUI.xcframework in Embed Frameworks */,
+				0756852D267D725B00D0B4B8 /* AudioKit.xcframework in Embed Frameworks */,
+				0756852F267D725B00D0B4B8 /* AudioKitUI.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,8 +295,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		076E5FD12673B76C0089108B /* AudioKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AudioKit.xcframework; path = "../AudioKit frameworks.xcframework/AudioKit.xcframework"; sourceTree = "<group>"; };
-		076E5FD42673B7E50089108B /* AudioKitUI.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AudioKitUI.xcframework; path = "../AudioKit frameworks.xcframework/AudioKitUI.xcframework"; sourceTree = "<group>"; };
+		0756852A267D725B00D0B4B8 /* AudioKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AudioKit.xcframework; path = ../AudioKit4/AudioKit/Frameworks/AudioKit.xcframework; sourceTree = "<group>"; };
+		0756852B267D725B00D0B4B8 /* AudioKitUI.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AudioKitUI.xcframework; path = ../AudioKit4/AudioKit/Frameworks/AudioKitUI.xcframework; sourceTree = "<group>"; };
 		0790D53A267AE7DD0092F20E /* S1DSPFilterCrossfade.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = S1DSPFilterCrossfade.hpp; sourceTree = "<group>"; };
 		690F807A236B5B9D00FDC518 /* MailchimpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailchimpService.swift; sourceTree = "<group>"; };
 		69115F3D2363BBA000B144A5 /* Conductor+Audiobus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Conductor+Audiobus.swift"; sourceTree = "<group>"; };
@@ -725,9 +725,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0756852C267D725B00D0B4B8 /* AudioKit.xcframework in Frameworks */,
+				0756852E267D725B00D0B4B8 /* AudioKitUI.xcframework in Frameworks */,
 				C4B9C02B201D54D400D9833D /* AudioToolbox.framework in Frameworks */,
-				076E5FD52673B7E60089108B /* AudioKitUI.xcframework in Frameworks */,
-				076E5FD22673B76D0089108B /* AudioKit.xcframework in Frameworks */,
 				076E5FD92673BA820089108B /* Disk in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -771,8 +771,8 @@
 		9461F0371F5CAAE600EE226E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				076E5FD42673B7E50089108B /* AudioKitUI.xcframework */,
-				076E5FD12673B76C0089108B /* AudioKit.xcframework */,
+				0756852A267D725B00D0B4B8 /* AudioKit.xcframework */,
+				0756852B267D725B00D0B4B8 /* AudioKitUI.xcframework */,
 				C4B9C02A201D54D400D9833D /* AudioToolbox.framework */,
 			);
 			name = Frameworks;

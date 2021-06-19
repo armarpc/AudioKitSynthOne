@@ -384,6 +384,7 @@ void S1NoteState::run(int frameIndex, float *outL, float *outR) {
     float synthOut = amp * kt2 * (osc_morph_out + subOsc_out + fmOsc_out + noise_out);
 
     //filterOut:  Always calcuate all filters so when user switches the buffers are up-to-date.
+    //filterOut:  Wait 20 frames when the user switches so the buffers are filled
     float moogOut;
     sp_moogladder_compute(kernel->spp(), loPass, &synthOut, &moogOut);
     float bandOut;
