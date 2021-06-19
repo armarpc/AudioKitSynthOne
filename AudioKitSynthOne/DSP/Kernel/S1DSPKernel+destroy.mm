@@ -10,7 +10,7 @@
 
 void S1DSPKernel::destroy() {
     for(int i = 0; i< S1Parameter::S1ParameterCount; i++) {
-        sp_port_destroy(&s1p[i].portamento);
+        s1_port_destroy(&s1p[i].portamento);
     }
     sp_port_destroy(&monoFrequencyPort);
     sp_port_destroy(&lfo1Port);

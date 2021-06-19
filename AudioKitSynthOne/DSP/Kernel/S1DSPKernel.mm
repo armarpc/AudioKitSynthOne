@@ -37,7 +37,7 @@ void S1DSPKernel::init(int _channels, double _sampleRate) {
     sp->nchan = _channels;
 
     for(int i = 0; i< S1Parameter::S1ParameterCount; i++) {
-      sp_port_create(&s1p[i].portamento);
+      s1_port_create(&s1p[i].portamento);
     }
     setupParameterTree(std::nullopt);
 
@@ -124,7 +124,7 @@ void S1DSPKernel::setupParameterTree(std::optional<DSPParameters> params) {
         const float value = (params != std::nullopt) ? (*params)[i] : defaultValue((S1Parameter)i);
         if (s1p[i].usePortamento) {
             s1p[i].portamentoTarget = value;
-            sp_port_init(sp, s1p[i].portamento, value);
+            s1_port_init(sp, s1p[i].portamento, value);
             s1p[i].portamento->htime = S1_PORTAMENTO_HALF_TIME;
         }
         parameters[i] = value;

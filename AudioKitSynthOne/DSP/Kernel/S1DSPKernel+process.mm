@@ -11,6 +11,7 @@
 #import "S1DSPKernel.hpp"
 #import "AEArray.h"
 #import "S1NoteState.hpp"
+#import <Accelerate/Accelerate.h>
 
 void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount bufferOffset) {
     initializeNoteStates();
@@ -54,19 +55,23 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
         // MONO chain uses outL, ignores outR.  STEREO starts at AutoPan
 
         //MARK: PORTAMENTO
+        //vDSP_Stride stride = 1;
+        float outp;
         for(int i = 0; i< S1Parameter::S1ParameterCount; i++) {
             if (s1p[i].usePortamento) {
                 S1ParameterInfo* parameterInfo = s1p + i;
-                sp_port* p = parameterInfo->portamento;
+                s1_port* p = parameterInfo->portamento;
                 // Inline the sp_port_compute function. This results in a 20% reduction
                 // in CPU usage.
                 // BEGIN sp_port_compute
                 if(p->prvhtim != p->htime){
-                    p->c2 = pow(0.5, p->onedsr / p->htime);
-                    p->c1 = 1.0 - p->c2;
+                    p->c[1] = pow(0.5, p->onedsr / p->htime);
+                    p->c[0] = 1.0 - p->c[1];
                     p->prvhtim = p->htime;
                 }
-                parameters[i] = p->yt1 = p->c1 * parameterInfo->portamentoTarget + p->c2 * p->yt1;
+                parameters[i] = p->y[1] = p->c[0] * parameterInfo->portamentoTarget + p->c[1] * p->y[1];
+                vDSP_dotpr(p->c, 1, p->y, 1, &outp, 2);
+                parameters[i] = p->y[1] = outp;
                 // END sp_port_compute
             }
         }

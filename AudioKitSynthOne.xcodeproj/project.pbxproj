@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		070A983B267E4784005DA16A /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 070A983A267E4784005DA16A /* Accelerate.framework */; };
+		070A983D267E4F35005DA16A /* S1DSPKernel+portamento.mm in Sources */ = {isa = PBXBuildFile; fileRef = 070A983C267E4F35005DA16A /* S1DSPKernel+portamento.mm */; };
 		076E5FD92673BA820089108B /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = 076E5FD82673BA820089108B /* Disk */; };
 		0790D534267A3DCE0092F20E /* AudioKitUI.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0790D532267A3DCE0092F20E /* AudioKitUI.xcframework */; };
 		0790D535267A3DCE0092F20E /* AudioKitUI.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0790D532267A3DCE0092F20E /* AudioKitUI.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -306,6 +308,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		070A983A267E4784005DA16A /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		070A983C267E4F35005DA16A /* S1DSPKernel+portamento.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "S1DSPKernel+portamento.mm"; sourceTree = "<group>"; };
 		0790D532267A3DCE0092F20E /* AudioKitUI.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AudioKitUI.xcframework; path = ../AudioKit4/AudioKit/Frameworks/AudioKitUI.xcframework; sourceTree = "<group>"; };
 		0790D533267A3DCE0092F20E /* AudioKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AudioKit.xcframework; path = ../AudioKit4/AudioKit/Frameworks/AudioKit.xcframework; sourceTree = "<group>"; };
 		07946D9D26757ABA002CB102 /* S1DSPHorizons.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = S1DSPHorizons.cpp; sourceTree = "<group>"; };
@@ -749,6 +753,7 @@
 			files = (
 				C4B9C02B201D54D400D9833D /* AudioToolbox.framework in Frameworks */,
 				0790D536267A3DCE0092F20E /* AudioKit.xcframework in Frameworks */,
+				070A983B267E4784005DA16A /* Accelerate.framework in Frameworks */,
 				0790D534267A3DCE0092F20E /* AudioKitUI.xcframework in Frameworks */,
 				076E5FD92673BA820089108B /* Disk in Frameworks */,
 			);
@@ -818,6 +823,7 @@
 		9461F0371F5CAAE600EE226E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				070A983A267E4784005DA16A /* Accelerate.framework */,
 				0790D533267A3DCE0092F20E /* AudioKit.xcframework */,
 				0790D532267A3DCE0092F20E /* AudioKitUI.xcframework */,
 				C4B9C02A201D54D400D9833D /* AudioToolbox.framework */,
@@ -1115,6 +1121,7 @@
 				C4B490FC20C6564D00FD565A /* S1DSPKernel+toggleKeys.mm */,
 				07946D9D26757ABA002CB102 /* S1DSPHorizons.cpp */,
 				07946D9E26757ABA002CB102 /* S1DSPHorizons.hpp */,
+				070A983C267E4F35005DA16A /* S1DSPKernel+portamento.mm */,
 			);
 			path = Kernel;
 			sourceTree = "<group>";
@@ -1837,6 +1844,7 @@
 				F47C27E42207C12100CA7541 /* Tunings+TuneUp.swift in Sources */,
 				C4B490E920C64AC600FD565A /* S1DSPKernel+MIDI.mm in Sources */,
 				C4B490E720C649D900FD565A /* S1DSPKernel+destroy.mm in Sources */,
+				070A983D267E4F35005DA16A /* S1DSPKernel+portamento.mm in Sources */,
 				F4E4D00421C5B9F2005B2FAF /* TuningBank.swift in Sources */,
 				949D93B91F2C188C007E657B /* LFOToggle.swift in Sources */,
 				C435C4FB20C5234900DAECCD /* PresetCell.swift in Sources */,

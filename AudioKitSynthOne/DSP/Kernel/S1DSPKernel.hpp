@@ -266,6 +266,14 @@ private:
     ///can be called from within the render loop
     void heldNotesDidChange();
     
+    typedef struct {
+        SPFLOAT c[2];
+        SPFLOAT htime;
+        SPFLOAT prvhtim;
+        SPFLOAT y[2];
+        SPFLOAT sr, onedsr;
+    } s1_port;
+    
     struct S1ParameterInfo {
         S1Parameter parameter;
         float minimum;
@@ -275,9 +283,14 @@ private:
         std::string friendlyName;
         AudioUnitParameterUnit unit;
         bool usePortamento;
-        sp_port *portamento;
+        s1_port *portamento;
         float portamentoTarget;
     };
+    
+    int s1_port_create(s1_port **p);
+    int s1_port_destroy(s1_port **p);
+    int s1_port_init(sp_data *sp, s1_port *p, SPFLOAT htime);
+    int s1_port_reset(sp_data *sp, s1_port *p, SPFLOAT *in);
 
     // array of struct S1NoteState of count MAX_POLYPHONY
     std::unique_ptr<NoteStateArray> noteStates;
