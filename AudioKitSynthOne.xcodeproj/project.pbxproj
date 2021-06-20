@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07554437267F75800041D5CB /* AudioKitUI.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07554435267F75800041D5CB /* AudioKitUI.xcframework */; };
+		07554438267F75800041D5CB /* AudioKitUI.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07554435267F75800041D5CB /* AudioKitUI.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07554439267F75800041D5CB /* AudioKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07554436267F75800041D5CB /* AudioKit.xcframework */; };
+		0755443A267F75800041D5CB /* AudioKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07554436267F75800041D5CB /* AudioKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		076E5FD92673BA820089108B /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = 076E5FD82673BA820089108B /* Disk */; };
-		0790D534267A3DCE0092F20E /* AudioKitUI.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0790D532267A3DCE0092F20E /* AudioKitUI.xcframework */; };
-		0790D535267A3DCE0092F20E /* AudioKitUI.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0790D532267A3DCE0092F20E /* AudioKitUI.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0790D536267A3DCE0092F20E /* AudioKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0790D533267A3DCE0092F20E /* AudioKit.xcframework */; };
-		0790D537267A3DCE0092F20E /* AudioKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0790D533267A3DCE0092F20E /* AudioKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		07946D9F26757ABA002CB102 /* S1DSPHorizons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07946D9D26757ABA002CB102 /* S1DSPHorizons.cpp */; };
 		07B641C7267474600071547C /* s1soundpipeextension.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B641C6267474600071547C /* s1soundpipeextension.hpp */; };
 		07B641D1267476900071547C /* compressor.c in Sources */ = {isa = PBXBuildFile; fileRef = 07B641C82674768E0071547C /* compressor.c */; };
@@ -297,8 +297,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0790D535267A3DCE0092F20E /* AudioKitUI.xcframework in Embed Frameworks */,
-				0790D537267A3DCE0092F20E /* AudioKit.xcframework in Embed Frameworks */,
+				07554438267F75800041D5CB /* AudioKitUI.xcframework in Embed Frameworks */,
+				0755443A267F75800041D5CB /* AudioKit.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,8 +306,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0790D532267A3DCE0092F20E /* AudioKitUI.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AudioKitUI.xcframework; path = ../AudioKit4/AudioKit/Frameworks/AudioKitUI.xcframework; sourceTree = "<group>"; };
-		0790D533267A3DCE0092F20E /* AudioKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AudioKit.xcframework; path = ../AudioKit4/AudioKit/Frameworks/AudioKit.xcframework; sourceTree = "<group>"; };
+		07554435267F75800041D5CB /* AudioKitUI.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AudioKitUI.xcframework; path = ../AudioKit4/AudioKit/Frameworks/AudioKitUI.xcframework; sourceTree = "<group>"; };
+		07554436267F75800041D5CB /* AudioKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AudioKit.xcframework; path = ../AudioKit4/AudioKit/Frameworks/AudioKit.xcframework; sourceTree = "<group>"; };
 		07946D9D26757ABA002CB102 /* S1DSPHorizons.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = S1DSPHorizons.cpp; sourceTree = "<group>"; };
 		07946D9E26757ABA002CB102 /* S1DSPHorizons.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = S1DSPHorizons.hpp; sourceTree = "<group>"; };
 		07B641C6267474600071547C /* s1soundpipeextension.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = s1soundpipeextension.hpp; path = AudioKitSynthOne/DSP/S1SoundpipeExtension/s1soundpipeextension.hpp; sourceTree = SOURCE_ROOT; };
@@ -748,8 +748,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4B9C02B201D54D400D9833D /* AudioToolbox.framework in Frameworks */,
-				0790D536267A3DCE0092F20E /* AudioKit.xcframework in Frameworks */,
-				0790D534267A3DCE0092F20E /* AudioKitUI.xcframework in Frameworks */,
+				07554439267F75800041D5CB /* AudioKit.xcframework in Frameworks */,
+				07554437267F75800041D5CB /* AudioKitUI.xcframework in Frameworks */,
 				076E5FD92673BA820089108B /* Disk in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -818,8 +818,8 @@
 		9461F0371F5CAAE600EE226E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0790D533267A3DCE0092F20E /* AudioKit.xcframework */,
-				0790D532267A3DCE0092F20E /* AudioKitUI.xcframework */,
+				07554436267F75800041D5CB /* AudioKit.xcframework */,
+				07554435267F75800041D5CB /* AudioKitUI.xcframework */,
 				C4B9C02A201D54D400D9833D /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
@@ -1567,7 +1567,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = AudioKit;
 				TargetAttributes = {
 					C4D193C31F1187B500FF4FE4 = {
@@ -2231,7 +2231,7 @@
 					"$(PROJECT_DIR)",
 					"$(SRCROOT)",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lstdc++";
@@ -2295,7 +2295,7 @@
 					"$(PROJECT_DIR)",
 					"$(SRCROOT)",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-lstdc++";
 				SDKROOT = iphoneos;
@@ -2325,7 +2325,7 @@
 				DEVELOPMENT_TEAM = GKHP2F2CML;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = AudioKitSynthOne/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2334,6 +2334,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/AudioKitSynthOne/Link/lib",
 				);
+				LLVM_LTO = YES;
 				MARKETING_VERSION = 101.8.1;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
@@ -2370,7 +2371,7 @@
 				DEVELOPMENT_TEAM = GKHP2F2CML;
 				GCC_OPTIMIZATION_LEVEL = fast;
 				INFOPLIST_FILE = AudioKitSynthOne/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2379,6 +2380,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/AudioKitSynthOne/Link/lib",
 				);
+				LLVM_LTO = YES;
 				MARKETING_VERSION = 101.8.1;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
