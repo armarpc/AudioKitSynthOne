@@ -34,6 +34,7 @@ void S1Sequencer::reset(bool resetNotes) {
     sequencerLastNotes.clear();
     sequencerNotes.clear();
     sequencerNotes2.clear();
+    noKeysFrameCounter = 0;
 }
 
 void S1Sequencer::process(DSPParameters &params, __weak AEArray *heldNoteNumbersAE) {
@@ -43,6 +44,17 @@ void S1Sequencer::process(DSPParameters &params, __weak AEArray *heldNoteNumbers
     const BOOL arpSeqIsOn = (params[arpIsOn] == 1.f);
     const BOOL firstTimeAnyKeysHeld = (previousHeldNoteNumbersAECount == 0 && heldNoteNumbersAECount > 0);
     const BOOL firstTimeNoKeysHeld = (heldNoteNumbersAECount == 0 && previousHeldNoteNumbersAECount > 0);
+    
+    if (heldNoteNumbersAECount == 0) {
+        if (noKeysFrameCounter < 441000) {
+            noKeysFrameCounter++;
+        }
+    } else {
+        noKeysFrameCounter = 0;
+    }
+    if (noKeysFrameCounter == 441000) {
+        return;
+    }
     
     // reset arp/seq when user goes from 0 to N, or N to 0 held keys
     if ( arpSeqIsOn && (firstTimeNoKeysHeld || firstTimeAnyKeysHeld) ) {

@@ -47,6 +47,8 @@ private:
     // Array of midi note numbers of NoteState's which have had a noteOn event but not yet a noteOff event.
     int previousHeldNoteNumbersAECount; // previous render loop held key count
 
+    int noKeysFrameCounter = 0;
+    
     // Beattime Counter
     double mBeatTime = 0;
     std::atomic<int> mStepCounter = 0;
