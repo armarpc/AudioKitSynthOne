@@ -126,7 +126,9 @@ public:
     void destroy();
     
     void updatePortamento(float halfTime);
-
+    
+    static void updatePortamentoInternalValues(sp_port* port);
+    
     // initializeNoteStates() must be called AFTER init returns
     void initializeNoteStates();
     

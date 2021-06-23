@@ -62,11 +62,6 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
             // Inline the sp_port_compute function. This results in a 20% relative
             // reduction in CPU usage.
             // BEGIN sp_port_compute
-            if(p->prvhtim != p->htime){
-                p->c2 = pow(0.5, p->onedsr / p->htime);
-                p->c1 = 1.0 - p->c2;
-                p->prvhtim = p->htime;
-            }
             parameters[parameterIndex] = p->yt1 = p->c1 * parameterInfo->portamentoTarget + p->c2 * p->yt1;
             // END sp_port_compute
         }

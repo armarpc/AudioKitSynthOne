@@ -131,8 +131,8 @@ void S1DSPKernel::setupParameterTree(std::optional<DSPParameters> params) {
         const float value = (params != std::nullopt) ? (*params)[i] : defaultValue((S1Parameter)i);
         if (s1p[i].usePortamento) {
             s1p[i].portamentoTarget = value;
-            sp_port_init(sp, s1p[i].portamento, value);
-            s1p[i].portamento->htime = S1_PORTAMENTO_HALF_TIME;
+            sp_port_init(sp, s1p[i].portamento, S1_PORTAMENTO_HALF_TIME);
+            updatePortamentoInternalValues(s1p[i].portamento);
         }
         parameters[i] = value;
     }
