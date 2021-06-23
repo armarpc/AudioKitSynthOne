@@ -356,6 +356,9 @@ private:
     const float bars_max = 8.f;
     const float rate_min = 1.f / ( (beatsPerBar * bars_max) / (bpm_min * minutesPerSecond) ); //  0.00052 8 bars at 1bpm
     const float rate_max = 1.f / ( (beatsPerBar * bars_min) / (bpm_max * minutesPerSecond) ); // 53.3333
+    
+    std::vector<int> portamentoParameterIndexes;
+    
     S1ParameterInfo s1p[S1Parameter::S1ParameterCount] = {
         { index1,                0, 1, 1, "index1", "Index 1", kAudioUnitParameterUnit_Generic, true, NULL},
         { index2,                0, 1, 1, "index2", "Index 2", kAudioUnitParameterUnit_Generic, true, NULL},

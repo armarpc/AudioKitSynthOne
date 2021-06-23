@@ -115,6 +115,13 @@ void S1DSPKernel::init(int _channels, double _sampleRate) {
 
     // restore values
     restoreValues(std::nullopt);
+    
+    for (int i = 0; i < S1Parameter::S1ParameterCount; i++) {
+        if (s1p[i].usePortamento) {
+            portamentoParameterIndexes.push_back(i);
+        }
+    }
+    
     mIsInitialized = true;
 }
 
