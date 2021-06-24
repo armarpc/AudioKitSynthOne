@@ -19,6 +19,10 @@ public:
     S1DSPHorizon(double sampleRate);
     void updateSampleRate(double sampleRate);
     
+    // Next are the horizon frame counts for each operation. Among the included operations,
+    // osc, buthp, and widen are rather simple computationally, so there might not
+    // be much advantage in optimizing them out of the process function. 
+    
     int pan2Duration = 10; // seconds
     int pan2FrameCount = defaultFrameCount;
     
