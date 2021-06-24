@@ -150,7 +150,7 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
 
         // Count the number of consecutive silent frames
         if (synthOut == 0) {
-            if (silenceSampleCounter < maximumSilenceSamples) {
+            if (silenceSampleCounter < horizon->maxFrameCount) {
                 silenceSampleCounter++;
             } else {
                 // 10 consecutive seconds of silence, no need to compute anything

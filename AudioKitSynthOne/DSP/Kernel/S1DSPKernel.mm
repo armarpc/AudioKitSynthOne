@@ -12,6 +12,7 @@
 #import "S1DSPKernel.hpp"
 #import "AEArray.h"
 #import "S1NoteState.hpp"
+#import "S1DSPHorizon.hpp"
 
 using namespace std::placeholders;
 
@@ -121,6 +122,8 @@ void S1DSPKernel::init(int _channels, double _sampleRate) {
             portamentoParameterIndexes.push_back(i);
         }
     }
+    
+    horizon = std::make_unique<S1DSPHorizon>(_sampleRate);
     
     mIsInitialized = true;
 }

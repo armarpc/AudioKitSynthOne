@@ -1,22 +1,23 @@
 //
-//  S1DSPHorizons.hpp
+//  S1DSPHorizon.hpp
 //  AudioKitSynthOne
 //
 //  Created by Carlos Gómez on 12/6/21.
 //  Copyright © 2021 AudioKit. All rights reserved.
 //
 
-#ifndef S1DSPHorizons_hpp
-#define S1DSPHorizons_hpp
+#ifndef S1DSPHorizon_hpp
+#define S1DSPHorizon_hpp
 
 #include <stdio.h>
 
-class S1DSPHorizons {
+class S1DSPHorizon {
 private:
     int defaultFrameCount = 480001; // 48000 * 10 + 1
     
 public:
-    S1DSPHorizons(double sampleRate);
+    S1DSPHorizon(double sampleRate);
+    void updateSampleRate(double sampleRate);
     
     int phaserFrameCount = 47;
     
@@ -44,12 +45,12 @@ public:
     int widenDuration = 0.05;
     int widenFrameCount = defaultFrameCount;
     
-    // max between moogladder, buthp, and butbp
-    int filtersFrameCount = 8;
+    // Maximum of all horizons (which is that of vdelay and pan2)
+    int maxFrameCount = defaultFrameCount;
     
 private:
     void calculateFrameCounts(double sampleRate);
     int durationToFrameCount(double sampleRate, double duration);
 };
 
-#endif /* S1DSPHorizons_hpp */
+#endif /* S1DSPHorizon_hpp */

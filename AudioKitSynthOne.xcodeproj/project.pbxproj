@@ -12,7 +12,7 @@
 		07554439267F75800041D5CB /* AudioKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07554436267F75800041D5CB /* AudioKit.xcframework */; };
 		0755443A267F75800041D5CB /* AudioKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07554436267F75800041D5CB /* AudioKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		076E5FD92673BA820089108B /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = 076E5FD82673BA820089108B /* Disk */; };
-		07946D9F26757ABA002CB102 /* S1DSPHorizons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 07946D9D26757ABA002CB102 /* S1DSPHorizons.cpp */; };
+		07946D9F26757ABA002CB102 /* S1DSPHorizon.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07946D9D26757ABA002CB102 /* S1DSPHorizon.mm */; };
 		07B641C7267474600071547C /* s1soundpipeextension.hpp in Sources */ = {isa = PBXBuildFile; fileRef = 07B641C6267474600071547C /* s1soundpipeextension.hpp */; };
 		07B641D1267476900071547C /* compressor.c in Sources */ = {isa = PBXBuildFile; fileRef = 07B641C82674768E0071547C /* compressor.c */; };
 		07B641D2267476900071547C /* revsc.c in Sources */ = {isa = PBXBuildFile; fileRef = 07B641C92674768E0071547C /* revsc.c */; };
@@ -308,8 +308,8 @@
 /* Begin PBXFileReference section */
 		07554435267F75800041D5CB /* AudioKitUI.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AudioKitUI.xcframework; path = ../AudioKit4/AudioKit/Frameworks/AudioKitUI.xcframework; sourceTree = "<group>"; };
 		07554436267F75800041D5CB /* AudioKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AudioKit.xcframework; path = ../AudioKit4/AudioKit/Frameworks/AudioKit.xcframework; sourceTree = "<group>"; };
-		07946D9D26757ABA002CB102 /* S1DSPHorizons.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = S1DSPHorizons.cpp; sourceTree = "<group>"; };
-		07946D9E26757ABA002CB102 /* S1DSPHorizons.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = S1DSPHorizons.hpp; sourceTree = "<group>"; };
+		07946D9D26757ABA002CB102 /* S1DSPHorizon.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = S1DSPHorizon.mm; sourceTree = "<group>"; };
+		07946D9E26757ABA002CB102 /* S1DSPHorizon.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = S1DSPHorizon.hpp; sourceTree = "<group>"; };
 		07B641C6267474600071547C /* s1soundpipeextension.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = s1soundpipeextension.hpp; path = AudioKitSynthOne/DSP/S1SoundpipeExtension/s1soundpipeextension.hpp; sourceTree = SOURCE_ROOT; };
 		07B641C82674768E0071547C /* compressor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = compressor.c; sourceTree = "<group>"; };
 		07B641C92674768E0071547C /* revsc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = revsc.c; sourceTree = "<group>"; };
@@ -1113,8 +1113,8 @@
 				C4B490FA20C6560000FD565A /* S1DSPKernel+startStopNotes.mm */,
 				C4B490F020C64ED200FD565A /* S1DSPKernel+tapers.mm */,
 				C4B490FC20C6564D00FD565A /* S1DSPKernel+toggleKeys.mm */,
-				07946D9D26757ABA002CB102 /* S1DSPHorizons.cpp */,
-				07946D9E26757ABA002CB102 /* S1DSPHorizons.hpp */,
+				07946D9D26757ABA002CB102 /* S1DSPHorizon.mm */,
+				07946D9E26757ABA002CB102 /* S1DSPHorizon.hpp */,
 			);
 			path = Kernel;
 			sourceTree = "<group>";
@@ -1746,7 +1746,7 @@
 				C4B490F720C654E600FD565A /* S1DSPKernel+reset.mm in Sources */,
 				07B641C7267474600071547C /* s1soundpipeextension.hpp in Sources */,
 				C435C58420C530C900DAECCD /* S1NoteState.mm in Sources */,
-				07946D9F26757ABA002CB102 /* S1DSPHorizons.cpp in Sources */,
+				07946D9F26757ABA002CB102 /* S1DSPHorizon.mm in Sources */,
 				C4B4915220C7C6FC00FD565A /* Manager+MIDISettingsPopOverDelegate.swift in Sources */,
 				C4B4915820C7C70D00FD565A /* TuningsPitchWheelView.swift in Sources */,
 				C435C58320C530C900DAECCD /* AEAudioThreadEndpoint.m in Sources */,

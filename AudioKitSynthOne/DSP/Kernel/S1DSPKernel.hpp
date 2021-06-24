@@ -20,6 +20,7 @@
 #import "S1Rate.hpp"
 #import "../Sequencer/S1Sequencer.hpp"
 #import "S1DSPCompressor.hpp"
+#import "S1DSPHorizon.hpp"
 
 @class AEArray;
 @class AEMessageQueue;
@@ -339,7 +340,7 @@ private:
     
     // Count consecutive silence samples to reduce power consumption
     int silenceSampleCounter = 0;
-    int maximumSilenceSamples = 480001; // Actual value is set in updateWavetableIncrementValuesForCurrentSampleRate()
+    std::unique_ptr<S1DSPHorizon> horizon;
     
     ///once init'd: sequencerLastNotes can be accessed and mutated only within process and resetDSP
     std::list<int> sequencerLastNotes;

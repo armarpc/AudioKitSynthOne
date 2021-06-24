@@ -1,27 +1,33 @@
 //
-//  S1DSPHorizons.cpp
+//  S1DSPHorizon.mm
 //  AudioKitSynthOne
 //
 //  Created by Carlos Gómez on 12/6/21.
 //  Copyright © 2021 AudioKit. All rights reserved.
 //
 
-#include "S1DSPHorizons.hpp"
+#include "S1DSPHorizon.hpp"
 
-S1DSPHorizons::S1DSPHorizons(double sampleRate) {
+S1DSPHorizon::S1DSPHorizon(double sampleRate) {
     calculateFrameCounts(sampleRate);
 }
 
-void S1DSPHorizons::calculateFrameCounts(double sampleRate) {
+void S1DSPHorizon::calculateFrameCounts(double sampleRate) {
     vdelayFrameCount = durationToFrameCount(sampleRate, vdelayDuration);
     pan2FrameCount = durationToFrameCount(sampleRate, pan2Duration);
     oscFrameCount = durationToFrameCount(sampleRate, oscDuration);
     compressorFrameCount = durationToFrameCount(sampleRate, compressorDuration);
     revscFrameCount = durationToFrameCount(sampleRate, revscDuration);
     widenFrameCount = durationToFrameCount(sampleRate, widenDuration);
+    // Set maxFrameCount to the maximum horizon
+    maxFrameCount = vdelayFrameCount;
 }
 
-int S1DSPHorizons::durationToFrameCount(double sampleRate, double duration) {
-    // Add 1 to accomodate for rounding errors (see sp_vdelay_init)
+void S1DSPHorizon::updateSampleRate(double sampleRate) {
+    calculateFrameCounts(sampleRate);
+}
+
+int S1DSPHorizon::durationToFrameCount(double sampleRate, double duration) {
+    // Add 1 to accommodate for rounding errors (see sp_vdelay_init)
     return duration * sampleRate + 1;
 }
