@@ -19,38 +19,33 @@ public:
     S1DSPHorizon(double sampleRate);
     void updateSampleRate(double sampleRate);
     
-    // Next are the horizon frame counts for each operation. Among the included operations,
-    // osc, buthp, and widen are rather simple computationally, so there might not
-    // be much advantage in optimizing them out of the process function. 
+    // Next are the horizon sizes in number of frames for each operation. Among the
+    // included operations, osc, buthp, and widen are rather simple computationally, so
+    // there might not be much advantage in optimizing them out of the process function.
     
-    int pan2Duration = 10; // seconds
     int pan2FrameCount = defaultFrameCount;
-    
-    int oscDuration = pan2Duration; // pan2 oscilator
-    int oscFrameCount = defaultFrameCount;
-    
+    int oscFrameCount = defaultFrameCount; // pan2 oscilator
     int phaserFrameCount = 47;
-    
     int moogladderFrameCount = 8;
-    
-    int vdelayDuration = 10;
     int vdelayFrameCount = defaultFrameCount;
-    
     int buthpFrameCount = 8;
-    
-    int compressorDuration = 0.5;
     int compressorFrameCount = defaultFrameCount;
-    
-    int revscDuration = 5;
     int revscFrameCount = defaultFrameCount;
-    
-    int widenDuration = 0.05;
     int widenFrameCount = defaultFrameCount;
     
     // Maximum of all horizons (which is that of vdelay and pan2)
     int maxFrameCount = defaultFrameCount;
     
 private:
+    // Some horizons can only be specified as a duration in seconds and transformed to
+    // frames at runtime
+    double pan2Duration = 10;
+    double oscDuration = pan2Duration;
+    double vdelayDuration = 10;
+    double compressorDuration = 0.5;
+    double revscDuration = 5;
+    double widenDuration = 0.05;
+    
     void calculateFrameCounts(double sampleRate);
     int durationToFrameCount(double sampleRate, double duration);
 };
