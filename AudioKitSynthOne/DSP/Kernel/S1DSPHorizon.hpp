@@ -19,22 +19,20 @@ public:
     S1DSPHorizon(double sampleRate);
     void updateSampleRate(double sampleRate);
     
-    int phaserFrameCount = 47;
-    
-    int moogladderFrameCount = 8;
-    
-    int vdelayDuration = 10; // seconds
-    int vdelayFrameCount = defaultFrameCount;
-    
-    int pan2Duration = 10;
+    int pan2Duration = 10; // seconds
     int pan2FrameCount = defaultFrameCount;
     
     int oscDuration = pan2Duration; // pan2 oscilator
     int oscFrameCount = defaultFrameCount;
     
-    int buthpFrameCount = 8;
+    int phaserFrameCount = 47;
     
-    int butbpFrameCount = 8;
+    int moogladderFrameCount = 8;
+    
+    int vdelayDuration = 10;
+    int vdelayFrameCount = defaultFrameCount;
+    
+    int buthpFrameCount = 8;
     
     int compressorDuration = 0.5;
     int compressorFrameCount = defaultFrameCount;
