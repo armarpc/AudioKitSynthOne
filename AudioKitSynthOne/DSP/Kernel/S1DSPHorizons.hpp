@@ -13,14 +13,16 @@
 
 class S1DSPHorizons {
 private:
-    int defaultFrameCount = 480001;
+    int defaultFrameCount = 480001; // 48000 * 10 + 1
     
 public:
+    S1DSPHorizons(double sampleRate);
+    
     int phaserFrameCount = 47;
     
     int moogladderFrameCount = 8;
     
-    int vdelayDuration = 10;
+    int vdelayDuration = 10; // seconds
     int vdelayFrameCount = defaultFrameCount;
     
     int pan2Duration = 10;
@@ -46,7 +48,8 @@ public:
     int filtersFrameCount = 8;
     
 private:
-    int durationToFrameCount(double duration);
+    void calculateFrameCounts(double sampleRate);
+    int durationToFrameCount(double sampleRate, double duration);
 };
 
 #endif /* S1DSPHorizons_hpp */
