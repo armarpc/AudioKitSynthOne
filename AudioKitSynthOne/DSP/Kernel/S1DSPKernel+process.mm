@@ -217,7 +217,7 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
         *phaser0->Notch_width = parameters[phaserNotchWidth];
         *phaser0->feedback_gain = parameters[phaserFeedback];
         *phaser0->lfobpm = parameters[phaserRate];
-        if (lPhaserMix != 0.f) {
+        if (lPhaserMix != 0.f && (silenceSampleCounter < horizon->phaserFrameCount)) {
             lPhaserMix = 1.f - lPhaserMix;
             sp_phaser_compute(sp, phaser0, &panL, &panR, &phaserOutL, &phaserOutR);
             phaserOutL = lPhaserMix * panL + (1.f - lPhaserMix) * phaserOutL;
@@ -227,7 +227,7 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
         // For lowpass osc filter: use a lowpass on delay input, with magically-attenuated cutoff
         float delayInputLowPassOutL = phaserOutL;
         float delayInputLowPassOutR = phaserOutR;
-        if(parameters[filterType] == 0.f) {
+        if (parameters[filterType] == 0.f && (silenceSampleCounter < horizon->moogladderFrameCount)) {
             const float pmin2 = log2(1024.f);
             const float pmax2 = log2(maximum(cutoff));
             const float pval1 = parameters[cutoff];
@@ -254,15 +254,17 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
         float delayOutR = 0.f;
         float delayOutRR = 0.f;
         float delayFillInOut = 0.f;
-        delayL->del = delayR->del = parameters[delayTime] * 2.f;
-        delayRR->del = delayFillIn->del = parameters[delayTime];
-        delayL->feedback = delayR->feedback = parameters[delayFeedback];
-        delayRR->feedback = delayFillIn->feedback = parameters[delayFeedback];
-        sp_vdelay_compute(sp, delayL,      &delayInputLowPassOutL, &delayOutL);
-        sp_vdelay_compute(sp, delayR,      &delayInputLowPassOutR, &delayOutR);
-        sp_vdelay_compute(sp, delayFillIn, &delayInputLowPassOutR, &delayFillInOut);
-        sp_vdelay_compute(sp, delayRR,     &delayOutR,  &delayOutRR);
-        delayOutRR += delayFillInOut;
+        if (silenceSampleCounter < horizon->vdelayFrameCount) {
+            delayL->del = delayR->del = parameters[delayTime] * 2.f;
+            delayRR->del = delayFillIn->del = parameters[delayTime];
+            delayL->feedback = delayR->feedback = parameters[delayFeedback];
+            delayRR->feedback = delayFillIn->feedback = parameters[delayFeedback];
+            sp_vdelay_compute(sp, delayL,      &delayInputLowPassOutL, &delayOutL);
+            sp_vdelay_compute(sp, delayR,      &delayInputLowPassOutR, &delayOutR);
+            sp_vdelay_compute(sp, delayFillIn, &delayInputLowPassOutR, &delayFillInOut);
+            sp_vdelay_compute(sp, delayRR,     &delayOutR,  &delayOutRR);
+            delayOutRR += delayFillInOut;
+        }
 
         // DELAY MIXER
         float mixedDelayL = 0.f;
@@ -285,19 +287,25 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
         butOutR *= 2.f;
         float butCompressOutL = 0.f;
         float butCompressOutR = 0.f;
-        mCompReverbIn.compute(butOutL, butOutR, butCompressOutL, butCompressOutR);
+        if (silenceSampleCounter < horizon->compressorFrameCount) {
+            mCompReverbIn.compute(butOutL, butOutR, butCompressOutL, butCompressOutR);
+        }
 
         // REVERB
         float reverbWetL = 0.f;
         float reverbWetR = 0.f;
-        reverbCostello->feedback = parameters[reverbFeedback];
-        reverbCostello->lpfreq = 0.5f * sampleRate();
-        sp_revsc_compute(sp, reverbCostello, &butCompressOutL, &butCompressOutR, &reverbWetL, &reverbWetR);
+        if (silenceSampleCounter < horizon->revscFrameCount) {
+            reverbCostello->feedback = parameters[reverbFeedback];
+            reverbCostello->lpfreq = 0.5f * sampleRate();
+            sp_revsc_compute(sp, reverbCostello, &butCompressOutL, &butCompressOutR, &reverbWetL, &reverbWetR);
+        }
 
         // compressor for wet reverb; like X2, FM
         float wetReverbLimiterL = reverbWetL;
         float wetReverbLimiterR = reverbWetR;
-        mCompReverbWet.compute(reverbWetL, reverbWetR, wetReverbLimiterL, wetReverbLimiterR);
+        if (silenceSampleCounter < horizon->compressorFrameCount) {
+            mCompReverbWet.compute(reverbWetL, reverbWetR, wetReverbLimiterL, wetReverbLimiterR);
+        }
 
         // crossfade wet reverb with wet+dry delay
         float reverbCrossfadeOutL = 0.f;
@@ -322,7 +330,9 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
         float compressorOutR = reverbCrossfadeOutR;
 
         // MASTER COMPRESSOR TOGGLE: 0 = no compressor, 1 = compressor
-        mCompMaster.compute(reverbCrossfadeOutL, reverbCrossfadeOutR, compressorOutL, compressorOutR);
+        if (silenceSampleCounter < horizon->compressorFrameCount) {
+            mCompMaster.compute(reverbCrossfadeOutL, reverbCrossfadeOutR, compressorOutL, compressorOutR);
+        }
 
         // WIDEN: constant delay with no filtering, so functionally equivalent to being inside master
         float widenOutR = 0.f;
