@@ -206,9 +206,7 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
         sp_osc_compute(sp, panOscillator, nil, &panValue);
         pan->pan = panValue;
         float panL = 0.f, panR = 0.f;
-        if (silenceSampleCounter < horizon->pan2FrameCount) {
-            sp_pan2_compute(sp, pan, &bitCrushOut, &panL, &panR); // pan2 is equal power
-        }
+        sp_pan2_compute(sp, pan, &bitCrushOut, &panL, &panR); // pan2 is equal power
 
         // PHASER+CROSSFADE
         float phaserOutL = panL;

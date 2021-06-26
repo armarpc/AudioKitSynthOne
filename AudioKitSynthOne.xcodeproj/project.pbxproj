@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		07554437267F75800041D5CB /* AudioKitUI.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07554435267F75800041D5CB /* AudioKitUI.xcframework */; };
-		07554438267F75800041D5CB /* AudioKitUI.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07554435267F75800041D5CB /* AudioKitUI.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		07554439267F75800041D5CB /* AudioKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07554436267F75800041D5CB /* AudioKit.xcframework */; };
-		0755443A267F75800041D5CB /* AudioKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07554436267F75800041D5CB /* AudioKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		076E5FD92673BA820089108B /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = 076E5FD82673BA820089108B /* Disk */; };
 		07946D9F26757ABA002CB102 /* S1DSPHorizon.mm in Sources */ = {isa = PBXBuildFile; fileRef = 07946D9D26757ABA002CB102 /* S1DSPHorizon.mm */; };
 		69115F3E2363BBA100B144A5 /* Conductor+Audiobus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69115F3D2363BBA000B144A5 /* Conductor+Audiobus.swift */; };
@@ -279,21 +277,6 @@
 		F4E4D00721C81E34005B2FAF /* tunings_v0_upgrade_path_test.json in Resources */ = {isa = PBXBuildFile; fileRef = F4E4D00521C81DB4005B2FAF /* tunings_v0_upgrade_path_test.json */; };
 		F4E4D00921C87B9F005B2FAF /* Tunings+DefaultTunings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E4D00821C87B9F005B2FAF /* Tunings+DefaultTunings.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		0790D538267A3DCF0092F20E /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				07554438267F75800041D5CB /* AudioKitUI.xcframework in Embed Frameworks */,
-				0755443A267F75800041D5CB /* AudioKit.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		07554435267F75800041D5CB /* AudioKitUI.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AudioKitUI.xcframework; path = ../AudioKit4/AudioKit/Frameworks/AudioKitUI.xcframework; sourceTree = "<group>"; };
@@ -1500,7 +1483,6 @@
 				C4D193C11F1187B500FF4FE4 /* Frameworks */,
 				C4D193C21F1187B500FF4FE4 /* Resources */,
 				C4421AA920B81D0500BE9F12 /* ShellScript */,
-				0790D538267A3DCF0092F20E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
