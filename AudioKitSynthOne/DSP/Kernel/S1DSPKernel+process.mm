@@ -148,6 +148,7 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
         // MONO: NoteState render output "synthOut" is mono
         float synthOut = outL[frameIndex];
 
+        /*
         // Count the number of consecutive silent frames
         if (synthOut == 0) {
             if (silenceSampleCounter < horizon->maxFrameCount) {
@@ -161,33 +162,37 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
         } else {
             silenceSampleCounter = 0;
         }
+         */
         
         // BITCRUSH LFO
-        float bitcrushSrate = parameters[bitCrushSampleRate];
-        bitcrushSrate = log2(bitcrushSrate);
-        const float magicNumber = 4.f;
-        if (parameters[bitcrushLFO] == 1.f)
-            bitcrushSrate += magicNumber * lfo1_0_1;
-        else if (parameters[bitcrushLFO] == 2.f)
-            bitcrushSrate += magicNumber * lfo2_0_1;
-        else if (parameters[bitcrushLFO] == 3.f)
-            bitcrushSrate += magicNumber * lfo3_0_1;
-        bitcrushSrate = exp2(bitcrushSrate);
-        bitcrushSrate = clampedValue(bitCrushSampleRate, bitcrushSrate); // clamp
-
-        ///BITCRUSH
         float bitCrushOut = synthOut;
-        bitcrushIncr = sampleRate() / bitcrushSrate;
-        if (bitcrushIncr < 1.f) bitcrushIncr = 1.f; // for the case where the audio engine samplerate > 44100 (i.e., 48000)
-        if (bitcrushIndex <= bitcrushSampleIndex) {
-            bitCrushOut = bitcrushValue = synthOut;
-            bitcrushIndex += bitcrushIncr; // bitcrushIncr >= 1
-            bitcrushIndex -= bitcrushSampleIndex;
-            bitcrushSampleIndex = 0;
-        } else {
-            bitCrushOut = bitcrushValue;
+        bitcrushSilenceSampleCount = (synthOut == 0) ? bitcrushSilenceSampleCount+1 : 0;
+        if (bitcrushSilenceSampleCount <= horizon->bitCrushFrameCount) {
+            float bitcrushSrate = parameters[bitCrushSampleRate];
+            bitcrushSrate = log2(bitcrushSrate);
+            const float magicNumber = 4.f;
+            if (parameters[bitcrushLFO] == 1.f)
+                bitcrushSrate += magicNumber * lfo1_0_1;
+            else if (parameters[bitcrushLFO] == 2.f)
+                bitcrushSrate += magicNumber * lfo2_0_1;
+            else if (parameters[bitcrushLFO] == 3.f)
+                bitcrushSrate += magicNumber * lfo3_0_1;
+            bitcrushSrate = exp2(bitcrushSrate);
+            bitcrushSrate = clampedValue(bitCrushSampleRate, bitcrushSrate); // clamp
+
+            ///BITCRUSH
+            bitcrushIncr = sampleRate() / bitcrushSrate;
+            if (bitcrushIncr < 1.f) bitcrushIncr = 1.f; // for the case where the audio engine samplerate > 44100 (i.e., 48000)
+            if (bitcrushIndex <= bitcrushSampleIndex) {
+                bitCrushOut = bitcrushValue = synthOut;
+                bitcrushIndex += bitcrushIncr; // bitcrushIncr >= 1
+                bitcrushIndex -= bitcrushSampleIndex;
+                bitcrushSampleIndex = 0;
+            } else {
+                bitCrushOut = bitcrushValue;
+            }
+            bitcrushSampleIndex += 1.f;
         }
-        bitcrushSampleIndex += 1.f;
 
         ///TREMOLO
         if (parameters[tremoloLFO] == 1.f)

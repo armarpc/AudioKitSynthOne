@@ -338,8 +338,8 @@ private:
     // Count samples to limit main thread notification
     double processSampleCounter = 0;
     
-    // Count consecutive silence samples to reduce power consumption
-    int silenceSampleCounter = 0;
+    // Count consecutive silence samples to reduce power consumption. These variables must be unsigned.
+    unsigned int bitcrushSilenceSampleCount = 0;
     std::unique_ptr<S1DSPHorizon> horizon;
     
     ///once init'd: sequencerLastNotes can be accessed and mutated only within process and resetDSP
