@@ -6,9 +6,10 @@
 //  Copyright © 2021 AudioKit. All rights reserved.
 //
 
-#include "S1DSPHorizon.hpp"
+#import <cmath>
+#import "S1DSPHorizon.hpp"
 
-S1DSPHorizon::S1DSPHorizon(double sampleRate) {
+S1DSPHorizon::S1DSPHorizon(double sampleRate, double bitCrushMinSampleRate) : bitCrushMinSampleRate(bitCrushMinSampleRate) {
     calculateFrameCounts(sampleRate);
 }
 
@@ -19,8 +20,12 @@ void S1DSPHorizon::calculateFrameCounts(double sampleRate) {
     compressorFrameCount = durationToFrameCount(sampleRate, compressorDuration);
     revscFrameCount = durationToFrameCount(sampleRate, revscDuration);
     widenFrameCount = durationToFrameCount(sampleRate, widenDuration);
+    bitCrushFrameCount = std::ceil(sampleRate / bitCrushMinSampleRate) + 1;
+    
+    /*
     // Set maxFrameCount to the maximum horizon
     maxFrameCount = vdelayFrameCount;
+     */
 }
 
 void S1DSPHorizon::updateSampleRate(double sampleRate) {

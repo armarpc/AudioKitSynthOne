@@ -9,20 +9,19 @@
 #ifndef S1DSPHorizon_hpp
 #define S1DSPHorizon_hpp
 
-#include <stdio.h>
-
 class S1DSPHorizon {
 private:
     int defaultFrameCount = 480001; // 48000 * 10 + 1
     
 public:
-    S1DSPHorizon(double sampleRate);
+    S1DSPHorizon(double sampleRate, double bitCrushMinSampleRate);
     void updateSampleRate(double sampleRate);
     
     // Next are the horizon sizes in number of frames for each operation. Among the
     // included operations, osc, buthp, and widen are rather simple computationally, so
     // there might not be much advantage in optimizing them out of the process function.
     
+    int bitCrushFrameCount = defaultFrameCount;
     int pan2FrameCount = defaultFrameCount;
     int oscFrameCount = defaultFrameCount; // pan2 oscilator
     int phaserFrameCount = 47;
@@ -45,6 +44,8 @@ private:
     double compressorDuration = 0.5;
     double revscDuration = 5;
     double widenDuration = 0.05;
+    
+    double bitCrushMinSampleRate;
     
     void calculateFrameCounts(double sampleRate);
     int durationToFrameCount(double sampleRate, double duration);

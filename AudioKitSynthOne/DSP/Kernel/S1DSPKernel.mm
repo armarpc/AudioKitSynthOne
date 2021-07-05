@@ -123,7 +123,7 @@ void S1DSPKernel::init(int _channels, double _sampleRate) {
         }
     }
     
-    horizon = std::make_unique<S1DSPHorizon>(_sampleRate);
+    horizon = std::make_unique<S1DSPHorizon>(_sampleRate, minimum(bitCrushSampleRate));
     
     mIsInitialized = true;
 }
