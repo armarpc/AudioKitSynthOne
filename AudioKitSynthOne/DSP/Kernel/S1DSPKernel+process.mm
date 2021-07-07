@@ -192,88 +192,98 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
                 bitCrushOut = bitcrushValue;
             }
             bitcrushSampleIndex += 1.f;
-        }
 
-        ///TREMOLO
-        if (parameters[tremoloLFO] == 1.f)
-            bitCrushOut *= lfo1_1_0;
-        else if (parameters[tremoloLFO] == 2.f)
-            bitCrushOut *= lfo2_1_0;
-        else if (parameters[tremoloLFO] == 3.f)
-            bitCrushOut *= lfo3_1_0;
+            ///TREMOLO
+            if (parameters[tremoloLFO] == 1.f)
+                bitCrushOut *= lfo1_1_0;
+            else if (parameters[tremoloLFO] == 2.f)
+                bitCrushOut *= lfo2_1_0;
+            else if (parameters[tremoloLFO] == 3.f)
+                bitCrushOut *= lfo3_1_0;
+        }
 
         ///MARK: STEREO CHAIN (EFX)
 
         // Signal goes from mono to stereo with autopan
-        panOscillator->freq = parameters[autoPanFrequency];
-        panOscillator->amp = parameters[autoPanAmount];
-        float panValue = 0.f;
-        sp_osc_compute(sp, panOscillator, nil, &panValue);
-        pan->pan = panValue;
         float panL = 0.f, panR = 0.f;
-        sp_pan2_compute(sp, pan, &bitCrushOut, &panL, &panR); // pan2 is equal power
+        panSilenceSampleCount = (bitCrushOut == 0) ? panSilenceSampleCount+1 : 0;
+        if (panSilenceSampleCount <= horizon->pan2FrameCount) {
+            panOscillator->freq = parameters[autoPanFrequency];
+            panOscillator->amp = parameters[autoPanAmount];
+            float panValue = 0.f;
+            sp_osc_compute(sp, panOscillator, nil, &panValue);
+            pan->pan = panValue;
+            sp_pan2_compute(sp, pan, &bitCrushOut, &panL, &panR); // pan2 is equal power
+        }
 
         // PHASER+CROSSFADE
         float phaserOutL = panL;
         float phaserOutR = panR;
-        float lPhaserMix = parameters[phaserMix];
-        *phaser0->Notch_width = parameters[phaserNotchWidth];
-        *phaser0->feedback_gain = parameters[phaserFeedback];
-        *phaser0->lfobpm = parameters[phaserRate];
-        if (lPhaserMix != 0.f) {
-            lPhaserMix = 1.f - lPhaserMix;
-            sp_phaser_compute(sp, phaser0, &panL, &panR, &phaserOutL, &phaserOutR);
-            phaserOutL = lPhaserMix * panL + (1.f - lPhaserMix) * phaserOutL;
-            phaserOutR = lPhaserMix * panR + (1.f - lPhaserMix) * phaserOutR;
+        phaserSilenceSampleCount = (panL == 0 && panR == 0) ? phaserSilenceSampleCount+1 : 0;
+        if (phaserSilenceSampleCount <= horizon->phaserFrameCount) {
+            float lPhaserMix = parameters[phaserMix];
+            *phaser0->Notch_width = parameters[phaserNotchWidth];
+            *phaser0->feedback_gain = parameters[phaserFeedback];
+            *phaser0->lfobpm = parameters[phaserRate];
+            if (lPhaserMix != 0.f) {
+                lPhaserMix = 1.f - lPhaserMix;
+                sp_phaser_compute(sp, phaser0, &panL, &panR, &phaserOutL, &phaserOutR);
+                phaserOutL = lPhaserMix * panL + (1.f - lPhaserMix) * phaserOutL;
+                phaserOutR = lPhaserMix * panR + (1.f - lPhaserMix) * phaserOutR;
+            }
         }
-
-        // For lowpass osc filter: use a lowpass on delay input, with magically-attenuated cutoff
-        float delayInputLowPassOutL = phaserOutL;
-        float delayInputLowPassOutR = phaserOutR;
-        if(parameters[filterType] == 0.f) {
-            const float pmin2 = log2(1024.f);
-            const float pmax2 = log2(maximum(cutoff));
-            const float pval1 = parameters[cutoff];
-            float pval2 = log2(pval1);
-            if (pval2 < pmin2) pval2 = pmin2;
-            if (pval2 > pmax2) pval2 = pmax2;
-            const float pnorm2 = (pval2 - pmin2)/(pmax2 - pmin2);
-            const float mmax = parameters[delayInputCutoffTrackingRatio];
-            const float mmin = 1.f;
-            const float oscFilterFreqCutoffPercentage = mmin + pnorm2 * (mmax - mmin);
-            const float oscFilterResonance = 0.f; // constant
-            float oscFilterFreqCutoff = pval1 * oscFilterFreqCutoffPercentage;
-            oscFilterFreqCutoff = clampedValue(cutoff, oscFilterFreqCutoff);
-            loPassInputDelayL->freq = oscFilterFreqCutoff;
-            loPassInputDelayL->res = oscFilterResonance;
-            loPassInputDelayR->freq = oscFilterFreqCutoff;
-            loPassInputDelayR->res = oscFilterResonance;
-            sp_moogladder_compute(sp, loPassInputDelayL, &phaserOutL, &delayInputLowPassOutL);
-            sp_moogladder_compute(sp, loPassInputDelayR, &phaserOutR, &delayInputLowPassOutR);
-        }
-
-        // PING PONG DELAY
-        float delayOutL = 0.f;
-        float delayOutR = 0.f;
-        float delayOutRR = 0.f;
-        float delayFillInOut = 0.f;
-        delayL->del = delayR->del = parameters[delayTime] * 2.f;
-        delayRR->del = delayFillIn->del = parameters[delayTime];
-        delayL->feedback = delayR->feedback = parameters[delayFeedback];
-        delayRR->feedback = delayFillIn->feedback = parameters[delayFeedback];
-        sp_vdelay_compute(sp, delayL,      &delayInputLowPassOutL, &delayOutL);
-        sp_vdelay_compute(sp, delayR,      &delayInputLowPassOutR, &delayOutR);
-        sp_vdelay_compute(sp, delayFillIn, &delayInputLowPassOutR, &delayFillInOut);
-        sp_vdelay_compute(sp, delayRR,     &delayOutR,  &delayOutRR);
-        delayOutRR += delayFillInOut;
-
-        // DELAY MIXER
+        
+        // DELAY
         float mixedDelayL = 0.f;
         float mixedDelayR = 0.f;
-        delayCrossfadeL->pos = parameters[delayMix] * parameters[delayOn];
-        delayCrossfadeR->pos = parameters[delayMix] * parameters[delayOn];
-        sp_crossfade_compute(sp, delayCrossfadeL, &phaserOutL, &delayOutL, &mixedDelayL);
-        sp_crossfade_compute(sp, delayCrossfadeR, &phaserOutR, &delayOutRR, &mixedDelayR);
+        delaySilenceSampleCount = (phaserOutL == 0 && phaserOutR == 0) ? delaySilenceSampleCount+1 : 0;
+        if (delaySilenceSampleCount <= horizon->totalDelayFrameCount) {
+            // For lowpass osc filter: use a lowpass on delay input, with magically-attenuated cutoff
+            float delayInputLowPassOutL = phaserOutL;
+            float delayInputLowPassOutR = phaserOutR;
+            if(parameters[filterType] == 0.f) {
+                const float pmin2 = log2(1024.f);
+                const float pmax2 = log2(maximum(cutoff));
+                const float pval1 = parameters[cutoff];
+                float pval2 = log2(pval1);
+                if (pval2 < pmin2) pval2 = pmin2;
+                if (pval2 > pmax2) pval2 = pmax2;
+                const float pnorm2 = (pval2 - pmin2)/(pmax2 - pmin2);
+                const float mmax = parameters[delayInputCutoffTrackingRatio];
+                const float mmin = 1.f;
+                const float oscFilterFreqCutoffPercentage = mmin + pnorm2 * (mmax - mmin);
+                const float oscFilterResonance = 0.f; // constant
+                float oscFilterFreqCutoff = pval1 * oscFilterFreqCutoffPercentage;
+                oscFilterFreqCutoff = clampedValue(cutoff, oscFilterFreqCutoff);
+                loPassInputDelayL->freq = oscFilterFreqCutoff;
+                loPassInputDelayL->res = oscFilterResonance;
+                loPassInputDelayR->freq = oscFilterFreqCutoff;
+                loPassInputDelayR->res = oscFilterResonance;
+                sp_moogladder_compute(sp, loPassInputDelayL, &phaserOutL, &delayInputLowPassOutL);
+                sp_moogladder_compute(sp, loPassInputDelayR, &phaserOutR, &delayInputLowPassOutR);
+            }
+
+            // PING PONG DELAY
+            float delayOutL = 0.f;
+            float delayOutR = 0.f;
+            float delayOutRR = 0.f;
+            float delayFillInOut = 0.f;
+            delayL->del = delayR->del = parameters[delayTime] * 2.f;
+            delayRR->del = delayFillIn->del = parameters[delayTime];
+            delayL->feedback = delayR->feedback = parameters[delayFeedback];
+            delayRR->feedback = delayFillIn->feedback = parameters[delayFeedback];
+            sp_vdelay_compute(sp, delayL,      &delayInputLowPassOutL, &delayOutL);
+            sp_vdelay_compute(sp, delayR,      &delayInputLowPassOutR, &delayOutR);
+            sp_vdelay_compute(sp, delayFillIn, &delayInputLowPassOutR, &delayFillInOut);
+            sp_vdelay_compute(sp, delayRR,     &delayOutR,  &delayOutRR);
+            delayOutRR += delayFillInOut;
+
+            // DELAY MIXER
+            delayCrossfadeL->pos = parameters[delayMix] * parameters[delayOn];
+            delayCrossfadeR->pos = parameters[delayMix] * parameters[delayOn];
+            sp_crossfade_compute(sp, delayCrossfadeL, &phaserOutL, &delayOutL, &mixedDelayL);
+            sp_crossfade_compute(sp, delayCrossfadeR, &phaserOutR, &delayOutRR, &mixedDelayR);
+        }
 
         // REVERB INPUT HIPASS FILTER
         float butOutL = 0.f;

@@ -31,6 +31,8 @@ public:
     int compressorFrameCount = defaultFrameCount;
     int revscFrameCount = defaultFrameCount;
     int widenFrameCount = defaultFrameCount;
+    int totalDelayFrameCount = defaultFrameCount;
+    int totalReverbFrameCount = defaultFrameCount;
     
     // Maximum of all horizons (which is that of vdelay and pan2)
     int maxFrameCount = defaultFrameCount;

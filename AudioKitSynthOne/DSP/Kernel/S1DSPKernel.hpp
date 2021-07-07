@@ -340,6 +340,13 @@ private:
     
     // Count consecutive silence samples to reduce power consumption. These variables must be unsigned.
     unsigned int bitcrushSilenceSampleCount = 0;
+    unsigned int panSilenceSampleCount = 0;
+    unsigned int phaserSilenceSampleCount = 0;
+    unsigned int delaySilenceSampleCount = 0;
+    unsigned int reverbSilenceSampleCount = 0;
+    unsigned int masterCompressorSilenceSampleCount = 0;
+    
+    // Horizons to reduce power consumption
     std::unique_ptr<S1DSPHorizon> horizon;
     
     ///once init'd: sequencerLastNotes can be accessed and mutated only within process and resetDSP

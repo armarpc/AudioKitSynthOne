@@ -21,6 +21,8 @@ void S1DSPHorizon::calculateFrameCounts(double sampleRate) {
     revscFrameCount = durationToFrameCount(sampleRate, revscDuration);
     widenFrameCount = durationToFrameCount(sampleRate, widenDuration);
     bitCrushFrameCount = std::ceil(sampleRate / bitCrushMinSampleRate) + 1;
+    totalDelayFrameCount = moogladderFrameCount + 2*vdelayFrameCount + vdelayFrameCount;
+    totalReverbFrameCount = buthpFrameCount + compressorFrameCount + revscFrameCount + compressorFrameCount;
     
     /*
     // Set maxFrameCount to the maximum horizon
