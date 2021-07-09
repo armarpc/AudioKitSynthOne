@@ -59,8 +59,7 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
             const int parameterIndex = portamentoParameterIndexes[i];
             S1ParameterInfo* parameterInfo = s1p + parameterIndex;
             sp_port* p = parameterInfo->portamento;
-            // Inline the sp_port_compute function. This results in a 20% relative
-            // reduction in CPU usage.
+            // Inline the sp_port_compute function. This results in a 20% relative reduction in CPU usage.
             // BEGIN sp_port_compute
             parameters[parameterIndex] = p->yt1 = p->c1 * parameterInfo->portamentoTarget + p->c2 * p->yt1;
             // END sp_port_compute
@@ -147,22 +146,6 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
 
         // MONO: NoteState render output "synthOut" is mono
         float synthOut = outL[frameIndex];
-
-        /*
-        // Count the number of consecutive silent frames
-        if (synthOut == 0) {
-            if (silenceSampleCounter < horizon->maxFrameCount) {
-                silenceSampleCounter++;
-            } else {
-                // 10 consecutive seconds of silence, no need to compute anything
-                outL[frameIndex] = 0;
-                outR[frameIndex] = 0;
-                continue;
-            }
-        } else {
-            silenceSampleCounter = 0;
-        }
-         */
         
         // BITCRUSH LFO
         float bitCrushOut = synthOut;
