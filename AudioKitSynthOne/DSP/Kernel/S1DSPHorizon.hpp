@@ -33,6 +33,7 @@ public:
     int widenFrameCount = defaultFrameCount;
     int totalDelayFrameCount = defaultFrameCount;
     int totalReverbFrameCount = defaultFrameCount;
+    int totalMasterFrameCount = defaultFrameCount;
     
     // Maximum of all horizons (which is that of vdelay and pan2)
     int maxFrameCount = defaultFrameCount;

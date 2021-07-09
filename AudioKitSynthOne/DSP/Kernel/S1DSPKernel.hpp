@@ -344,7 +344,7 @@ private:
     unsigned int phaserSilenceSampleCount = 0;
     unsigned int delaySilenceSampleCount = 0;
     unsigned int reverbSilenceSampleCount = 0;
-    unsigned int masterCompressorSilenceSampleCount = 0;
+    unsigned int masterSilenceSampleCount = 0;
     
     // Horizons to reduce power consumption
     std::unique_ptr<S1DSPHorizon> horizon;

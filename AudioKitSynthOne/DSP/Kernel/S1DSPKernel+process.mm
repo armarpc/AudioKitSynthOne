@@ -284,48 +284,52 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
             sp_crossfade_compute(sp, delayCrossfadeL, &phaserOutL, &delayOutL, &mixedDelayL);
             sp_crossfade_compute(sp, delayCrossfadeR, &phaserOutR, &delayOutRR, &mixedDelayR);
         }
-
-        // REVERB INPUT HIPASS FILTER
-        float butOutL = 0.f;
-        float butOutR = 0.f;
-        butterworthHipassL->freq = parameters[reverbHighPass];
-        butterworthHipassR->freq = parameters[reverbHighPass];
-        sp_buthp_compute(sp, butterworthHipassL, &mixedDelayL, &butOutL);
-        sp_buthp_compute(sp, butterworthHipassR, &mixedDelayR, &butOutR);
-
-        // Pre Gain + compression on reverb input
-        butOutL *= 2.f;
-        butOutR *= 2.f;
-        float butCompressOutL = 0.f;
-        float butCompressOutR = 0.f;
-        mCompReverbIn.compute(butOutL, butOutR, butCompressOutL, butCompressOutR);
-
+        
         // REVERB
-        float reverbWetL = 0.f;
-        float reverbWetR = 0.f;
-        reverbCostello->feedback = parameters[reverbFeedback];
-        reverbCostello->lpfreq = 0.5f * sampleRate();
-        sp_revsc_compute(sp, reverbCostello, &butCompressOutL, &butCompressOutR, &reverbWetL, &reverbWetR);
-
-        // compressor for wet reverb; like X2, FM
-        float wetReverbLimiterL = reverbWetL;
-        float wetReverbLimiterR = reverbWetR;
-        mCompReverbWet.compute(reverbWetL, reverbWetR, wetReverbLimiterL, wetReverbLimiterR);
-
-        // crossfade wet reverb with wet+dry delay
         float reverbCrossfadeOutL = 0.f;
         float reverbCrossfadeOutR = 0.f;
-        float reverbMixFactor = parameters[reverbMix] * parameters[reverbOn];
-        if (parameters[reverbMixLFO] == 1.f)
-            reverbMixFactor *= lfo1_1_0;
-        else if (parameters[reverbMixLFO] == 2.f)
-            reverbMixFactor *= lfo2_1_0;
-        else if (parameters[reverbMixLFO] == 3.f)
-            reverbMixFactor *= lfo3_1_0;
-        revCrossfadeL->pos = reverbMixFactor;
-        revCrossfadeR->pos = reverbMixFactor;
-        sp_crossfade_compute(sp, revCrossfadeL, &mixedDelayL, &wetReverbLimiterL, &reverbCrossfadeOutL);
-        sp_crossfade_compute(sp, revCrossfadeR, &mixedDelayR, &wetReverbLimiterR, &reverbCrossfadeOutR);
+        reverbSilenceSampleCount = (mixedDelayL == 0 && mixedDelayR == 0) ? reverbSilenceSampleCount+1 : 0;
+        if (reverbSilenceSampleCount <= horizon->totalReverbFrameCount) {
+            // REVERB INPUT HIPASS FILTER
+            float butOutL = 0.f;
+            float butOutR = 0.f;
+            butterworthHipassL->freq = parameters[reverbHighPass];
+            butterworthHipassR->freq = parameters[reverbHighPass];
+            sp_buthp_compute(sp, butterworthHipassL, &mixedDelayL, &butOutL);
+            sp_buthp_compute(sp, butterworthHipassR, &mixedDelayR, &butOutR);
+
+            // Pre Gain + compression on reverb input
+            butOutL *= 2.f;
+            butOutR *= 2.f;
+            float butCompressOutL = 0.f;
+            float butCompressOutR = 0.f;
+            mCompReverbIn.compute(butOutL, butOutR, butCompressOutL, butCompressOutR);
+
+            // WET REVERB
+            float reverbWetL = 0.f;
+            float reverbWetR = 0.f;
+            reverbCostello->feedback = parameters[reverbFeedback];
+            reverbCostello->lpfreq = 0.5f * sampleRate();
+            sp_revsc_compute(sp, reverbCostello, &butCompressOutL, &butCompressOutR, &reverbWetL, &reverbWetR);
+
+            // compressor for wet reverb; like X2, FM
+            float wetReverbLimiterL = reverbWetL;
+            float wetReverbLimiterR = reverbWetR;
+            mCompReverbWet.compute(reverbWetL, reverbWetR, wetReverbLimiterL, wetReverbLimiterR);
+
+            // crossfade wet reverb with wet+dry delay
+            float reverbMixFactor = parameters[reverbMix] * parameters[reverbOn];
+            if (parameters[reverbMixLFO] == 1.f)
+                reverbMixFactor *= lfo1_1_0;
+            else if (parameters[reverbMixLFO] == 2.f)
+                reverbMixFactor *= lfo2_1_0;
+            else if (parameters[reverbMixLFO] == 3.f)
+                reverbMixFactor *= lfo3_1_0;
+            revCrossfadeL->pos = reverbMixFactor;
+            revCrossfadeR->pos = reverbMixFactor;
+            sp_crossfade_compute(sp, revCrossfadeL, &mixedDelayL, &wetReverbLimiterL, &reverbCrossfadeOutL);
+            sp_crossfade_compute(sp, revCrossfadeR, &mixedDelayR, &wetReverbLimiterR, &reverbCrossfadeOutR);
+        }
 
         // MASTER COMPRESSOR/LIMITER
         // 3db pre gain on input to master compressor
@@ -333,15 +337,19 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
         reverbCrossfadeOutR *= (2.f * parameters[masterVolume]);
         float compressorOutL = reverbCrossfadeOutL;
         float compressorOutR = reverbCrossfadeOutR;
-
-        // MASTER COMPRESSOR TOGGLE: 0 = no compressor, 1 = compressor
-        mCompMaster.compute(reverbCrossfadeOutL, reverbCrossfadeOutR, compressorOutL, compressorOutR);
-
-        // WIDEN: constant delay with no filtering, so functionally equivalent to being inside master
+        
+        // MASTER
         float widenOutR = 0.f;
-        sp_delay_compute(sp, widenDelay, &compressorOutR, &widenOutR);
-        widenOutR = parameters[widen] * widenOutR + (1.f - parameters[widen]) * compressorOutR;
+        masterSilenceSampleCount = (reverbCrossfadeOutL == 0 && reverbCrossfadeOutR == 0) ? masterSilenceSampleCount+1 : 0;
+        if (masterSilenceSampleCount <= horizon->totalMasterFrameCount) {
+            // MASTER COMPRESSOR TOGGLE: 0 = no compressor, 1 = compressor
+            mCompMaster.compute(reverbCrossfadeOutL, reverbCrossfadeOutR, compressorOutL, compressorOutR);
 
+            // WIDEN: constant delay with no filtering, so functionally equivalent to being inside master
+            sp_delay_compute(sp, widenDelay, &compressorOutR, &widenOutR);
+            widenOutR = parameters[widen] * widenOutR + (1.f - parameters[widen]) * compressorOutR;
+        }
+        
         // MASTER
         outL[frameIndex] = compressorOutL;
         outR[frameIndex] = widenOutR;
