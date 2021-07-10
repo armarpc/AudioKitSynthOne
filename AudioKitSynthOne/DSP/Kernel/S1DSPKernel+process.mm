@@ -146,7 +146,7 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
 
         // MONO: NoteState render output "synthOut" is mono
         float synthOut = outL[frameIndex];
-        
+
         // BITCRUSH LFO
         float bitCrushOut = synthOut;
         bitcrushSilenceSampleCount = (synthOut == 0) ? bitcrushSilenceSampleCount+1 : 0;
