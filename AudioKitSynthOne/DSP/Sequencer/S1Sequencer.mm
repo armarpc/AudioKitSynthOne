@@ -34,7 +34,7 @@ void S1Sequencer::reset(bool resetNotes) {
     sequencerLastNotes.clear();
     sequencerNotes.clear();
     sequencerNotes2.clear();
-    noKeysFrameCounter = 0;
+    noKeysFrameCount = 0;
 }
 
 void S1Sequencer::process(DSPParameters &params, __weak AEArray *heldNoteNumbersAE) {
@@ -46,13 +46,13 @@ void S1Sequencer::process(DSPParameters &params, __weak AEArray *heldNoteNumbers
     const BOOL firstTimeNoKeysHeld = (heldNoteNumbersAECount == 0 && previousHeldNoteNumbersAECount > 0);
     
     if (heldNoteNumbersAECount == 0) {
-        if (noKeysFrameCounter < 441000) {
-            noKeysFrameCounter++;
+        if (noKeysFrameCount < sequencerHorizonFrameCount) {
+            noKeysFrameCount++;
         }
     } else {
-        noKeysFrameCounter = 0;
+        noKeysFrameCount = 0;
     }
-    if (noKeysFrameCounter == 441000) {
+    if (noKeysFrameCount == sequencerHorizonFrameCount) {
         return;
     }
     
@@ -210,6 +210,8 @@ int S1Sequencer::getArpBeatCount() {
 
 void S1Sequencer::setSampleRate(double sampleRate) {
     mSampleRate = sampleRate;
+    // Sequencer's horizon is set to 6 seconds which is a reasonable value above the worst case, i.e. it could be set lower.
+    sequencerHorizonFrameCount = std::ceil(sampleRate * 6);
 }
 
 void S1Sequencer::setNotesPerOctave(int notes)

@@ -46,8 +46,9 @@ private:
 
     // Array of midi note numbers of NoteState's which have had a noteOn event but not yet a noteOff event.
     int previousHeldNoteNumbersAECount; // previous render loop held key count
-
-    int noKeysFrameCounter = 0;
+    
+    // Count the number of consecutive frames without held keys, to reduce power consumption.
+    int noKeysFrameCount = 0;
     
     // Beattime Counter
     double mBeatTime = 0;
@@ -62,6 +63,9 @@ private:
 
     std::atomic<int> mNotesPerOctave{12};
 
+    // Sequencer's horizon is set in S1Sequencer::setSampleRate function
+    int sequencerHorizonFrameCount = 480001; // Just an arbitrary default value
+    
     // Change notifications
     BeatCounterChangedCallback mBeatCounterDidChange;
     KeyOnCallback mTurnOnKey;

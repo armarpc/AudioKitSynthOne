@@ -33,5 +33,5 @@ void S1DSPHorizon::updateSampleRate(double sampleRate) {
 
 int S1DSPHorizon::durationToFrameCount(double sampleRate, double duration) {
     // Add 1 to accommodate for rounding errors (see sp_vdelay_init)
-    return duration * sampleRate + 1;
+    return std::ceil(duration * sampleRate) + 1;
 }
