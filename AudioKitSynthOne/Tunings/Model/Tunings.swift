@@ -129,6 +129,7 @@ final class Tunings {
     // MARK: - STORAGE
 
     func loadTunings(completionHandler: @escaping S1TuningLoadCallback) {
+        /*
         DispatchQueue.global(qos: .userInitiated).async {
             /// CLEAR
             self.tuningBanks.removeAll()
@@ -176,6 +177,7 @@ final class Tunings {
                 completionHandler()
             }
         }
+        */
     }
 
 
@@ -192,6 +194,7 @@ final class Tunings {
 
     /// Fresh Install
     internal func loadTuningFactoryPresets() {
+        /*
         tuningBanks.removeAll()
         tuningBanks.append(TuningBank())
         tuningBanks.append(TuningBank())
@@ -228,6 +231,7 @@ final class Tunings {
             hexanyTuning.order = order
             hexanyTriadsBank.tunings.append(hexanyTuning)
         }
+ */
     }
 
     /// saveTunings: For the cases where selectedTuningIndex changes
